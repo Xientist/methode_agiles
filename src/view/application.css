@@ -209,3 +209,19 @@
 
 -fx-background-color: black;
 }
+.combo-box-base {
+    
+    -fx-border-color: #e2e2e2;
+    -fx-padding: 5 12 5 12;   
+     -fx-border-width: 2;
+    -fx-background-radius: 0;
+    -fx-background-color: #1d1d1d;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 9pt;
+    -fx-text-fill: #000000;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+    -fx-alignment: CENTER;
+    -fx-content-display: LEFT;
+    
+   
+}

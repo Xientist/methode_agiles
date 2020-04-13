@@ -9,25 +9,30 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Model;
 import model.Transaction;
 
 public class AjoutTransactionController {
-	 @FXML private TextField transaction,categorie,montant,personne,date;
+
+	 @FXML private TextField transaction,montant,personne,date;
+	 @FXML private ComboBox categorie;
 	 String transaction_c,categorie_c,montant_c,personne_c,date_c;
 	 @FXML private Button ajouter,annuler;
+	 
 	 public void initialize() {
-		    //   budget.setText("$$$$");
-		    }
+		 
+		 	categorie.getItems().addAll("D�ｿｽpense","Gains");
+	    }
 		 
 	 
 	 
 	 public void ajouterTreansaction(ActionEvent event) throws IOException {
 		 
 		 	transaction_c	=	transaction.getText();
-		 	categorie_c	=	categorie.getText();
+		 	//categorie_c	=	categorie.getText();
 		 	montant_c		=	montant.getText();
 		 	personne_c		=	personne.getText();
 		 	date_c			=	date.getText();
@@ -54,7 +59,7 @@ public class AjoutTransactionController {
 		 	Transaction t = new Transaction(-1, montant_d, categorie_c, date_T, personne_i);
 		 	
 		 	Model.getInstance().insert(t);
-		 	
+
 			Parent parent= FXMLLoader.load(getClass().getResource("/view/acceuil.fxml"));
 	    	Scene scene=new Scene(parent);
 	    	scene.getStylesheets().add(getClass().getResource("/view/application.css").toExternalForm());

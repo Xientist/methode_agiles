@@ -22,10 +22,11 @@ public class TestDAO {
        // salaire.setMontant(954878987);
    
       // System.out.println(bd.getTransaction(0).getCategorie());
-    //   bd.getListeTransaction();
-  /*     for(Transaction t :bd.getListeTransaction()) {
-		System.out.println(t.getCategorie());
-	}*/
+       bd.getYears();
+       for(String t :bd.MAX_depense()) {
+		System.out.println(t);
+	}
+       System.out.println(bd.AVG_Depense_H(2020));
        
       // t.setMontant(7445445);
        //bd.update(t);
@@ -33,7 +34,7 @@ public class TestDAO {
        // bd.getListeTransaction();
       // bd.getTransaction(1);
        
- bd.importTransaction("U:/Agiles/data.xlsx");
+
   // bd.Delete(5);
     }
     
