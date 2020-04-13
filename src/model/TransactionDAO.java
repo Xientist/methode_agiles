@@ -258,6 +258,48 @@ public class TransactionDAO {
 			ee.printStackTrace();
 		}
 	}
+	//le budget global
+		public double BudgetGlobal() {
+			Connection con = null;
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			double retour = 0;
+			try {
+
+				con = DriverManager.getConnection(URL, LOGIN, PASS);
+				ps = con.prepareStatement("Select sum(Montant) as 'budget' from transaction WHERE Categorie ='Revenu'");
+				rs = ps.executeQuery();
+				if (rs.next()) {
+					retour = rs.getDouble("budget");
+				}
+
+			} catch (Exception ee) {
+				ee.printStackTrace();
+			} finally {
+				
+				try {
+					if (rs != null) {
+						rs.close();
+					}
+				} catch (Exception t) {
+				}
+				try {
+					if (ps != null) {
+						ps.close();
+					}
+				} catch (Exception t) {
+				}
+				try {
+					if (con != null) {
+						con.close();
+					}
+				} catch (Exception t) {
+				}
+			}
+			return retour;
+			
+			
+		}
 
 	// liste des annees dans la bd
 	public List<String> getYears() {
