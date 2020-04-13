@@ -19,9 +19,10 @@ public class TestDAO {
     
     public static void main(String[] args) throws IOException {
         //Personne dounya = new Personne("ennech");
-    	//Transaction salaire = new Transaction(0,1000, "income",Date.valueOf("2015-03-31"), );        
-        //TransactionDAO bd = new TransactionDAO();
-    	// salaire.setMontant(954878987);
+    Transaction salaire = new Transaction(0,1000, "income",Date.valueOf("2015-03-31"), 1);        
+      TransactionDAO bd = new TransactionDAO();
+      bd.insert(salaire);
+    	// salaire.setMontant(954878987);'rgeg
    
     	// System.out.println(bd.getTransaction(0).getCategorie());
     	//bd.getYears();
