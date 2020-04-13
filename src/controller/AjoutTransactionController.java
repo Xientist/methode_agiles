@@ -24,15 +24,13 @@ public class AjoutTransactionController {
 	 
 	 public void initialize() {
 		 
-		 	categorie.getItems().addAll("D�ｿｽpense","Gains");
+		 	categorie.getItems().addAll("Dépense","Revenu");
 	    }
-		 
-	 
 	 
 	 public void ajouterTreansaction(ActionEvent event) throws IOException {
 		 
 		 	transaction_c	=	transaction.getText();
-		 	//categorie_c	=	categorie.getText();
+		 	categorie_c		=	(categorie.getValue().toString().equals("Dépense"))? "Depense": "Revenu";
 		 	montant_c		=	montant.getText();
 		 	personne_c		=	personne.getText();
 		 	date_c			=	date.getText();
