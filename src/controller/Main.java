@@ -35,16 +35,18 @@ public class Main extends Application {
   
 
     public static void main(String[] args) {
-     	System.out.println("xouxou");
- 	   Personne dounya = new Personne("ennech");
- 	   //Transaction salaire = new Transaction(0,1000, "income",Date.valueOf("2015-03-31"), );        
- 	   TransactionDAO bd = new TransactionDAO();
- 	   // salaire.setMontant(954878987);
-		 // System.out.println(bd.getTransaction(0).getCategorie());
- 	   bd.getListeTransaction();
- 	   for(Transaction t :bd.getListeTransaction()) {
-			System.out.println(t.getCategorie());
- 	   }
+    	
+//    	System.out.println("xouxou");
+//    	Personne dounya = new Personne("ennech");
+//    	Transaction salaire = new Transaction(0,1000, "income",Date.valueOf("2015-03-31"), );        
+//    	TransactionDAO bd = new TransactionDAO();
+//    	salaire.setMontant(954878987);
+//    	System.out.println(bd.getTransaction(0).getCategorie());
+//    	bd.getListeTransaction();
+//    	for(Transaction t :bd.getListeTransaction()) {
+//    		System.out.println(t.getCategorie());
+//    	}
+    	
        launch(args);
     }
 }

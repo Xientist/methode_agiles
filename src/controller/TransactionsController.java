@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.List;
 import java.io.IOException;
 
 import javafx.event.ActionEvent;
@@ -9,14 +10,23 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import model.TransactionDAO;
+import model.Transaction;
 
 public class TransactionsController {
+	
 	@FXML private Button acceuil,transactions,statistiques,predictions;
 	//@FXML private Label budget,label;
 	
+	private List<Transaction> transacs;
+	
 	 public void initialize() {
-	    //   budget.setText("$$$$");
+		 
+		 	TransactionDAO dao = new TransactionDAO();
+		 	transacs = dao.getListeTransaction();
+		 	System.out.println(transacs.get(0).getMontant());
 	    }
+	 
 	 public void goToAjoutTransaction(ActionEvent event) throws IOException {
 			
 			Parent parent= FXMLLoader.load(getClass().getResource("/view/ajouttransaction.fxml"));
@@ -38,6 +48,7 @@ public class TransactionsController {
 	    	window.show();
 	    	
 		}
+	 
 	 public void goToTransaction(ActionEvent event) throws IOException {
 			
 			Parent parent= FXMLLoader.load(getClass().getResource("/view/transactions.fxml"));
@@ -47,7 +58,9 @@ public class TransactionsController {
 	    	window.setScene(scene);
 	    	window.show();
 	    	
-		} public void goToStatistiques(ActionEvent event) throws IOException {
+		} 
+	 
+	 public void goToStatistiques(ActionEvent event) throws IOException {
 			
 			Parent parent= FXMLLoader.load(getClass().getResource("/view/statistiques.fxml"));
 	    	Scene scene=new Scene(parent);
@@ -57,6 +70,7 @@ public class TransactionsController {
 	    	window.show();
 	    	
 		}
+	 
 	 public void goToPrediction(ActionEvent event) throws IOException {
 			
 			Parent parent= FXMLLoader.load(getClass().getResource("/view/predictions.fxml"));
