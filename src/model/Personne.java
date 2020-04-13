@@ -10,7 +10,8 @@ package model;
  * @author e1802484
  */
 public class Personne {
-    private String nom ;
+    private String nom;
+    private int id;
 
     public void setNom(String nom) {
         this.nom = nom;
@@ -20,7 +21,16 @@ public class Personne {
         return nom;
     }
 
-    public Personne(String nom) {
+    public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Personne(int id, String nom) {
+		this.id = id;
         this.nom = nom;
     }
     

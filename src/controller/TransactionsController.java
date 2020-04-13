@@ -22,7 +22,7 @@ public class TransactionsController {
 	
 	 public void initialize() {
 		 
-		 	transacs = Model.getInstance().getListeTransaction();
+		 	transacs = Model.getTransactionInstance().getListeTransaction();
 	    }
 	 
 	 public void goToAjoutTransaction(ActionEvent event) throws IOException {

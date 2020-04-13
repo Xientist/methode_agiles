@@ -65,7 +65,7 @@ public class PersonneDAO {
 			ps.setString(1, nom);
 			rs = ps.executeQuery();
 			if (rs.next()) {
-				retour = new Personne( rs.getString("Nom"));
+				retour = new Personne(rs.getInt("ID"), rs.getString("Nom"));
 			}
 
 		} catch (Exception ee) {
@@ -105,7 +105,7 @@ public class PersonneDAO {
 			ps.setInt(1, id);
 			rs = ps.executeQuery();
 			if (rs.next()) {
-				retour = new Personne( rs.getString("Nom"));
+				retour = new Personne(rs.getInt("ID"), rs.getString("Nom"));
 			}
 
 		} catch (Exception ee) {

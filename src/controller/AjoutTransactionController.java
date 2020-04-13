@@ -15,6 +15,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Model;
+import model.Personne;
 import model.Transaction;
 
 public class AjoutTransactionController {
@@ -38,7 +39,18 @@ public class AjoutTransactionController {
 		 	personne_c		=	personne.getText();
 		 	
 		 	Date date_T = Date.valueOf(date.getValue());
-		 	int personne_i = -1;
+		 	
+		 	Personne personne_p = Model.getPersonneInstance().getPersonByName(personne_c);
+		 	
+		 	if(personne_p == null) {
+		 		
+		 		personne_p = new Personne(-1, personne_c);
+		 		
+		 		Model.getPersonneInstance().insertPersone(personne_p);
+		 		
+		 		personne_p.setId(Model.getPersonneInstance().getPersonByName(personne_c).getId());
+		 	}
+		 	
 		 	double montant_d;
 		 	
 		 	try {
@@ -53,12 +65,12 @@ public class AjoutTransactionController {
 		 	System.out.println(transaction_c);
 		 	System.out.println( categorie_c);
 		 	System.out.println( montant_d);
-		 	System.out.println (personne_i);
+		 	System.out.println (personne_p.getId());
 		 	System.out.println(date_T);
 		 	
-		 	Transaction t = new Transaction(-1, montant_d, categorie_c, date_T, personne_i);
+		 	Transaction t = new Transaction(-1, montant_d, categorie_c, date_T, personne_p.getId());
 		 	
-		 	Model.getInstance().insert(t);
+		 	Model.getTransactionInstance().insert(t);
 
 			Parent parent= FXMLLoader.load(getClass().getResource("/view/acceuil.fxml"));
 	    	Scene scene=new Scene(parent);

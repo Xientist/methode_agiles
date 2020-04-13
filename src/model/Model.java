@@ -2,15 +2,26 @@ package model;
 
 public class Model {
 
-	private static TransactionDAO instance;
+	private static TransactionDAO transactionDAO;
+	private static PersonneDAO personneDAO;
 	
-	public static TransactionDAO getInstance() {
+	public static TransactionDAO getTransactionInstance() {
 		
-		if(Model.instance == null) {
+		if(Model.transactionDAO == null) {
 			
-			Model.instance = new TransactionDAO();
+			Model.transactionDAO = new TransactionDAO();
 		}
 		
-		return Model.instance;
+		return Model.transactionDAO;
+	}
+	
+	public static PersonneDAO getPersonneInstance() {
+		
+		if(Model.personneDAO == null) {
+			
+			Model.personneDAO = new PersonneDAO();
+		}
+		
+		return Model.personneDAO;
 	}
 }
