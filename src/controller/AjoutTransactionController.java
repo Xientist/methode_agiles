@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.sql.Date;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,8 +15,8 @@ import model.Model;
 import model.Transaction;
 
 public class AjoutTransactionController {
-	 @FXML private TextField transaction,categorie,montant,personne,date,type;
-	 String transaction_c,categorie_c,montant_c,personne_c,date_c,type_c;
+	 @FXML private TextField transaction,categorie,montant,personne,date;
+	 String transaction_c,categorie_c,montant_c,personne_c,date_c;
 	 @FXML private Button ajouter,annuler;
 	 public void initialize() {
 		    //   budget.setText("$$$$");
@@ -30,14 +31,29 @@ public class AjoutTransactionController {
 		 	montant_c		=	montant.getText();
 		 	personne_c		=	personne.getText();
 		 	date_c			=	date.getText();
-		 	type_c 		= 	type.getText();
+		 	
+		 	Date date_T = new Date(new java.util.Date().getTime());
+		 	int personne_i = -1;
+		 	double montant_d;
+		 	
+		 	try {
+		 		
+		 		montant_d = Double.parseDouble(montant_c);
+		 	
+		 	} catch(NumberFormatException nfe) {
+		 		
+		 		montant_d = 0.0;
+		 	}
 		 	
 		 	System.out.println(transaction_c);
 		 	System.out.println( categorie_c);
-		 	System.out.println( montant_c);
-		 	System.out.println (personne_c);
-		 	System.out.println(date_c);
-		 	System.out.println (type_c);
+		 	System.out.println( montant_d);
+		 	System.out.println (personne_i);
+		 	System.out.println(date_T);
+		 	
+		 	Transaction t = new Transaction(-1, montant_d, categorie_c, date_T, personne_i);
+		 	
+		 	Model.getInstance().insert(t);
 		 	
 			Parent parent= FXMLLoader.load(getClass().getResource("/view/acceuil.fxml"));
 	    	Scene scene=new Scene(parent);
