@@ -10,7 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-import model.TransactionDAO;
+import model.Model;
 import model.Transaction;
 
 public class TransactionsController {
@@ -22,8 +22,7 @@ public class TransactionsController {
 	
 	 public void initialize() {
 		 
-		 	TransactionDAO dao = new TransactionDAO();
-		 	transacs = dao.getListeTransaction();
+		 	transacs = Model.getInstance().getListeTransaction();
 		 	System.out.println(transacs.get(0).getMontant());
 	    }
 	 
