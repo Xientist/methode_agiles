@@ -304,205 +304,343 @@ public class TransactionDAO {
 
 	// Moyenne mensuelle des revenus
 	public double AVG_Revenu_M(int annee) {
-    	
-    	 Connection con = null;
-         PreparedStatement ps = null;
-         ResultSet rs = null;
-         double retour=0;
 
-        
-         try {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		double retour = 0;
 
-             con = DriverManager.getConnection(URL, LOGIN, PASS);
-             ps = con.prepareStatement("select sum(Montant)/12 as 'moyenne' from transaction WHERE Categorie='Revenu' and year(Date_T)= ?");
-             ps.setInt(1,annee);
-           
-             rs = ps.executeQuery();
-         
-             if (rs.next()) {
-retour=  rs.getDouble("moyenne")  ;      }
-       
+		try {
 
-         } catch (Exception ee) {
-             ee.printStackTrace();
-         } finally {
-             
-             try {
-                 if (rs != null) {
-                     rs.close();
-                 }
-             } catch (Exception t) {
-             }
-             try {
-                 if (ps != null) {
-                     ps.close();
-                 }
-             } catch (Exception t) {
-             }
-             try {
-                 if (con != null) {
-                     con.close();
-                 }
-             } catch (Exception t) {
-             }
-         }
-         return retour;
-    }
+			con = DriverManager.getConnection(URL, LOGIN, PASS);
+			ps = con.prepareStatement(
+					"select sum(Montant)/12 as 'moyenne' from transaction WHERE Categorie='Revenu' and year(Date_T)= ?");
+			ps.setInt(1, annee);
+
+			rs = ps.executeQuery();
+
+			if (rs.next()) {
+				retour = rs.getDouble("moyenne");
+			}
+
+		} catch (Exception ee) {
+			ee.printStackTrace();
+		} finally {
+
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+			} catch (Exception t) {
+			}
+			try {
+				if (ps != null) {
+					ps.close();
+				}
+			} catch (Exception t) {
+			}
+			try {
+				if (con != null) {
+					con.close();
+				}
+			} catch (Exception t) {
+			}
+		}
+		return retour;
+	}
 
 	// Moyenne mensuelle des depenses
-		public double AVG_Depense_M(int annee) {
-	    	
-	    	 Connection con = null;
-	         PreparedStatement ps = null;
-	         ResultSet rs = null;
-	         double retour=0;
+	public double AVG_Depense_M(int annee) {
 
-	        
-	         try {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		double retour = 0;
 
-	             con = DriverManager.getConnection(URL, LOGIN, PASS);
-	             ps = con.prepareStatement("select sum(Montant)/12 as 'moyenne' from transaction WHERE Categorie='Depense' and year(Date_T)= ?");
-	             ps.setInt(1,annee);
-	           
-	             rs = ps.executeQuery();
-	         
-	             if (rs.next()) {
-	retour=  rs.getDouble("moyenne")  ;      }
-	       
+		try {
 
-	         } catch (Exception ee) {
-	             ee.printStackTrace();
-	         } finally {
-	             
-	             try {
-	                 if (rs != null) {
-	                     rs.close();
-	                 }
-	             } catch (Exception t) {
-	             }
-	             try {
-	                 if (ps != null) {
-	                     ps.close();
-	                 }
-	             } catch (Exception t) {
-	             }
-	             try {
-	                 if (con != null) {
-	                     con.close();
-	                 }
-	             } catch (Exception t) {
-	             }
-	         }
-	         return retour;
-	    }
+			con = DriverManager.getConnection(URL, LOGIN, PASS);
+			ps = con.prepareStatement(
+					"select sum(Montant)/12 as 'moyenne' from transaction WHERE Categorie='Depense' and year(Date_T)= ?");
+			ps.setInt(1, annee);
 
-		// Moyenne hebdomadaire des revenus
-		public double AVG_Revenu_H(int annee) {
-	    	
-	    	 Connection con = null;
-	         PreparedStatement ps = null;
-	         ResultSet rs = null;
-	         double retour=0;
+			rs = ps.executeQuery();
 
-	        
-	         try {
+			if (rs.next()) {
+				retour = rs.getDouble("moyenne");
+			}
 
-	             con = DriverManager.getConnection(URL, LOGIN, PASS);
-	             ps = con.prepareStatement("select sum(Montant)/52 as 'moyenne' from transaction WHERE Categorie='Revenu' and year(Date_T)= ?");
-	             ps.setInt(1,annee);
-	           
-	             rs = ps.executeQuery();
-	         
-	             if (rs.next()) {
-	retour=  rs.getDouble("moyenne")  ;      }
-	       
+		} catch (Exception ee) {
+			ee.printStackTrace();
+		} finally {
 
-	         } catch (Exception ee) {
-	             ee.printStackTrace();
-	         } finally {
-	             
-	             try {
-	                 if (rs != null) {
-	                     rs.close();
-	                 }
-	             } catch (Exception t) {
-	             }
-	             try {
-	                 if (ps != null) {
-	                     ps.close();
-	                 }
-	             } catch (Exception t) {
-	             }
-	             try {
-	                 if (con != null) {
-	                     con.close();
-	                 }
-	             } catch (Exception t) {
-	             }
-	         }
-	         return retour;
-	    }
-		
-		// Moyenne mensuelle des depenses
-		public double AVG_Depense_H(int annee) {
-	    	
-	    	 Connection con = null;
-	         PreparedStatement ps = null;
-	         ResultSet rs = null;
-	         double retour=0;
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+			} catch (Exception t) {
+			}
+			try {
+				if (ps != null) {
+					ps.close();
+				}
+			} catch (Exception t) {
+			}
+			try {
+				if (con != null) {
+					con.close();
+				}
+			} catch (Exception t) {
+			}
+		}
+		return retour;
+	}
 
-	        
-	         try {
+	// Moyenne hebdomadaire des revenus
+	public double AVG_Revenu_H(int annee) {
 
-	             con = DriverManager.getConnection(URL, LOGIN, PASS);
-	             ps = con.prepareStatement("select sum(Montant)/52 as 'moyenne' from transaction WHERE Categorie='Depense' and year(Date_T)= ?");
-	             ps.setInt(1,annee);
-	           
-	             rs = ps.executeQuery();
-	         
-	             if (rs.next()) {
-	retour=  rs.getDouble("moyenne")  ;      }
-	       
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		double retour = 0;
 
-	         } catch (Exception ee) {
-	             ee.printStackTrace();
-	         } finally {
-	             
-	             try {
-	                 if (rs != null) {
-	                     rs.close();
-	                 }
-	             } catch (Exception t) {
-	             }
-	             try {
-	                 if (ps != null) {
-	                     ps.close();
-	                 }
-	             } catch (Exception t) {
-	             }
-	             try {
-	                 if (con != null) {
-	                     con.close();
-	                 }
-	             } catch (Exception t) {
-	             }
-	         }
-	         return retour;
-	    }
+		try {
+
+			con = DriverManager.getConnection(URL, LOGIN, PASS);
+			ps = con.prepareStatement(
+					"select sum(Montant)/52 as 'moyenne' from transaction WHERE Categorie='Revenu' and year(Date_T)= ?");
+			ps.setInt(1, annee);
+
+			rs = ps.executeQuery();
+
+			if (rs.next()) {
+				retour = rs.getDouble("moyenne");
+			}
+
+		} catch (Exception ee) {
+			ee.printStackTrace();
+		} finally {
+
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+			} catch (Exception t) {
+			}
+			try {
+				if (ps != null) {
+					ps.close();
+				}
+			} catch (Exception t) {
+			}
+			try {
+				if (con != null) {
+					con.close();
+				}
+			} catch (Exception t) {
+			}
+		}
+		return retour;
+	}
+
+	// Moyenne hebdomadaires des depenses
+	public double AVG_Depense_H(int annee) {
+
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		double retour = 0;
+
+		try {
+
+			con = DriverManager.getConnection(URL, LOGIN, PASS);
+			ps = con.prepareStatement(
+					"select sum(Montant)/52 as 'moyenne' from transaction WHERE Categorie='Depense' and year(Date_T)= ?");
+			ps.setInt(1, annee);
+
+			rs = ps.executeQuery();
+
+			if (rs.next()) {
+				retour = rs.getDouble("moyenne");
+			}
+
+		} catch (Exception ee) {
+			ee.printStackTrace();
+		} finally {
+
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+			} catch (Exception t) {
+			}
+			try {
+				if (ps != null) {
+					ps.close();
+				}
+			} catch (Exception t) {
+			}
+			try {
+				if (con != null) {
+					con.close();
+				}
+			} catch (Exception t) {
+			}
+		}
+		return retour;
+	}
+
 //les 3 personne ayant plus depense
-		public List<String> MAX_depense() {
+	public Map<String, String> MAX_depense(int annee) {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		Map<String, String> retour = new HashMap<String, String>();
+
+		try {
+
+			con = DriverManager.getConnection(URL, LOGIN, PASS);
+			ps = con.prepareStatement(
+					"SELECT personne.Nom ,Montant FROM transaction INNER JOIN personne on personne.ID=transaction.personne WHERE Categorie='Depense' and year(Date_T)=? ORDER by Montant DESC LIMIT 3");
+			ps.setInt(1, annee);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				retour.put(rs.getString("Nom"), String.valueOf(rs.getDouble("Montant")));
+			}
+
+		} catch (Exception ee) {
+			ee.printStackTrace();
+		} finally {
+			// fermeture du ResultSet, du PreparedStatement et de la Connection
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+			} catch (Exception t) {
+			}
+			try {
+				if (ps != null) {
+					ps.close();
+				}
+			} catch (Exception t) {
+			}
+			try {
+				if (con != null) {
+					con.close();
+				}
+			} catch (Exception t) {
+			}
+		}
+		return retour;
+	}
+
+//statistques Revenu
+	public Map<String, String> Stats_R(int filtre) {
+		final int LAST_MONTH = 1, SIX_MONTHS = 2, LAST_YEAR = 3, TWO_YEARS = 4;
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		Map<String, String> retour = new HashMap<String, String>();
+
+		try {
+
+			con = DriverManager.getConnection(URL, LOGIN, PASS);
+			if (filtre == 1) {
+				ps = con.prepareStatement(
+						"SELECT SUM(Montant) as 'montant', Date_T as'day' FROM `transaction` WHERE Date_T >= DATE_SUB( CURRENT_DATE, INTERVAL 1 Month )and Categorie='Revenu' GROUP by  day(Date_T) ");
+				rs = ps.executeQuery();
+				while (rs.next()) {
+					retour.put(String.valueOf(rs.getString("day")), String.valueOf(rs.getDouble("montant")));
+				}
+
+			} else if (filtre == 2) {
+				ps = con.prepareStatement("SELECT SUM(Montant) as 'montant', month(Date_T) as'month' FROM `transaction` WHERE Date_T >= DATE_SUB( CURRENT_DATE, INTERVAL 6 Month )and Categorie='Revenu' GROUP by  month(Date_T)");
+				rs = ps.executeQuery();
+				while (rs.next()) {
+					retour.put(String.valueOf(rs.getString("month")), String.valueOf(rs.getDouble("montant")));
+				}
+			} else if (filtre == 3) {
+				ps = con.prepareStatement("SELECT SUM(Montant) as 'montant', month(Date_T) as'month' FROM `transaction` WHERE Date_T >= DATE_SUB( CURRENT_DATE, INTERVAL 1 YEAR ) and Categorie='Revenu' GROUP by  month(Date_T)");
+				rs = ps.executeQuery();
+				while (rs.next()) {
+					retour.put(String.valueOf(rs.getString("month")), String.valueOf(rs.getDouble("montant")));
+				}
+			}
+				else
+				{
+					ps = con.prepareStatement("SELECT SUM(Montant) as 'montant',month(Date_T) as 'month' ,year(Date_T) as 'year' FROM `transaction` WHERE Date_T >= DATE_SUB( CURRENT_DATE, INTERVAL 2 YEAR ) and Categorie='Revenu' GROUP by month(Date_T) DESC,year(Date_T) DESC");
+					rs = ps.executeQuery();
+					while (rs.next()) {
+						retour.put(String.valueOf(rs.getString("month"))+'-'+String.valueOf(rs.getString("year")), String.valueOf(rs.getDouble("montant")));
+				}
+			}
+
+		} catch (Exception ee) {
+			ee.printStackTrace();
+		} finally {
+			// fermeture du ResultSet, du PreparedStatement et de la Connection
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+			} catch (Exception t) {
+			}
+			try {
+				if (ps != null) {
+					ps.close();
+				}
+			} catch (Exception t) {
+			}
+			try {
+				if (con != null) {
+					con.close();
+				}
+			} catch (Exception t) {
+			}
+		}
+		return retour;
+
+	}
+
+	//statistques Depense
+		public Map<String, String> Stats_D(int filtre) {
+			final int LAST_MONTH = 1, SIX_MONTHS = 2, LAST_YEAR = 3, TWO_YEARS = 4;
 			Connection con = null;
 			PreparedStatement ps = null;
 			ResultSet rs = null;
-			List<String> retour = new ArrayList<String>();
+			Map<String, String> retour = new HashMap<String, String>();
 
 			try {
 
 				con = DriverManager.getConnection(URL, LOGIN, PASS);
-				ps = con.prepareStatement("SELECT personne.Nom ,Montant FROM transaction INNER JOIN personne on personne.ID=transaction.personne WHERE Categorie='Depense' and year(Date_T)='2020' ORDER by Montant DESC LIMIT 3");
-				rs = ps.executeQuery();
-				while (rs.next()) {
-					retour.add(rs.getString("Nom"));
+				if (filtre == 1) {
+					ps = con.prepareStatement(
+							"SELECT SUM(Montant) as 'montant', Date_T as'day' FROM `transaction` WHERE Date_T >= DATE_SUB( CURRENT_DATE, INTERVAL 1 Month )and Categorie='Depense' GROUP by  day(Date_T) ");
+					rs = ps.executeQuery();
+					while (rs.next()) {
+						retour.put(String.valueOf(rs.getString("day")), String.valueOf(rs.getDouble("montant")));
+					}
+
+				} else if (filtre == 2) {
+					ps = con.prepareStatement("SELECT SUM(Montant) as 'montant', month(Date_T) as'month' FROM `transaction` WHERE Date_T >= DATE_SUB( CURRENT_DATE, INTERVAL 6 Month )and Categorie='Depense' GROUP by  month(Date_T)");
+					rs = ps.executeQuery();
+					while (rs.next()) {
+						retour.put(String.valueOf(rs.getString("month")), String.valueOf(rs.getDouble("montant")));
+					}
+				} else if (filtre == 3) {
+					ps = con.prepareStatement("SELECT SUM(Montant) as 'montant', month(Date_T) as'month' FROM `transaction` WHERE Date_T >= DATE_SUB( CURRENT_DATE, INTERVAL 1 YEAR ) and Categorie='Depense' GROUP by  month(Date_T)");
+					rs = ps.executeQuery();
+					while (rs.next()) {
+						retour.put(String.valueOf(rs.getString("month")), String.valueOf(rs.getDouble("montant")));
+					}
+				}
+					else
+					{
+						ps = con.prepareStatement("SELECT SUM(Montant) as 'montant',month(Date_T) as 'month' ,year(Date_T) as 'year' FROM `transaction` WHERE Date_T >= DATE_SUB( CURRENT_DATE, INTERVAL 2 YEAR ) and Categorie='Depense' GROUP by month(Date_T) DESC,year(Date_T) DESC");
+						rs = ps.executeQuery();
+						while (rs.next()) {
+							retour.put(String.valueOf(rs.getString("month"))+'-'+String.valueOf(rs.getString("year")), String.valueOf(rs.getDouble("montant")));
+					}
 				}
 
 			} catch (Exception ee) {
@@ -529,10 +667,8 @@ retour=  rs.getDouble("moyenne")  ;      }
 				}
 			}
 			return retour;
-		}
-			
 
-		
+		}
 	public void importTransaction(String fileName) throws IOException {
 
 		String excelFilePath = fileName;

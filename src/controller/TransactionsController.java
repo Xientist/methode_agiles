@@ -23,7 +23,6 @@ public class TransactionsController {
 	 public void initialize() {
 		 
 		 	transacs = Model.getInstance().getListeTransaction();
-		 	System.out.println(transacs.get(0).getMontant());
 	    }
 	 
 	 public void goToAjoutTransaction(ActionEvent event) throws IOException {

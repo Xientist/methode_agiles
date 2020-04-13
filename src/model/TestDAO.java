@@ -2,6 +2,8 @@ package model;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.util.Arrays;
+import java.util.HashMap;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -23,9 +25,9 @@ public class TestDAO {
    
       // System.out.println(bd.getTransaction(0).getCategorie());
        bd.getYears();
-       for(String t :bd.MAX_depense()) {
-		System.out.println(t);
-	}
+       System.out.println(Arrays.asList(bd.Stats_R(4)));
+		
+	
        System.out.println(bd.AVG_Depense_H(2020));
        
       // t.setMontant(7445445);
