@@ -59,7 +59,7 @@ public class TransactionsController {
 		}
 	 public void goToPrediction(ActionEvent event) throws IOException {
 			
-			Parent parent= FXMLLoader.load(getClass().getResource("/view/acceuil.fxml"));
+			Parent parent= FXMLLoader.load(getClass().getResource("/view/predictions.fxml"));
 	    	Scene scene=new Scene(parent);
 	    	scene.getStylesheets().add(getClass().getResource("/view/application.css").toExternalForm());
 	    	Stage window = (Stage) acceuil.getScene().getWindow();
@@ -67,4 +67,11 @@ public class TransactionsController {
 	    	window.show();
 	    	
 		}
+	 public void ajouterviaCSV(ActionEvent event) throws IOException {
+		 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/filechooser.fxml"));
+	    	Parent root1 = (Parent) fxmlLoader.load();
+	    	Stage stage = new Stage();
+	    	stage.setScene(new Scene(root1));  
+	    	stage.show();
+	 }
 }

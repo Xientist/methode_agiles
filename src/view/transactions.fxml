@@ -25,7 +25,7 @@
       </TableView>
       <Button layoutX="534.0" layoutY="14.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="118.0" text="Supprimer" />
       <Button layoutX="404.0" layoutY="14.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="118.0" text="Modifier" />
-      <Button layoutX="276.0" layoutY="14.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="118.0" text="Importer" />
+      <Button layoutX="276.0" layoutY="14.0" mnemonicParsing="false" onAction="#ajouterviaCSV" prefHeight="32.0" prefWidth="118.0" text="Importer" />
       <Button layoutX="170.0" layoutY="14.0" mnemonicParsing="false" onAction="#goToAjoutTransaction" prefHeight="32.0" prefWidth="96.0" text="Ajouter" />
    </children>
 </AnchorPane>

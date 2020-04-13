@@ -10,13 +10,17 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-public class AcceuilController {
+public class PredictionsController {
 
 	@FXML private Button acceuil,transactions,statistiques,predictions;
 	//@FXML private Label budget,label;
 	
+
+	
 	 public void initialize() {
-	    //   budget.setText("$$$$");
+	    
+		 
+		 
 	    }
 	 
 	 public void goToAcceuil(ActionEvent event) throws IOException {
@@ -58,6 +62,4 @@ public class AcceuilController {
 	    	window.show();
 	    	
 		}
-	
-	    
 }
