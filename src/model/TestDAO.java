@@ -27,7 +27,9 @@ public class TestDAO {
        bd.getYears();
        System.out.println(Arrays.asList(bd.Stats_R(4)));
 		
-	
+	PersonneDAO p = new PersonneDAO();
+	p.insertPersone(dounya);
+	System.out.println(p.getPersonById(7).getNom());
        System.out.println(bd.AVG_Depense_H(2020));
        
       // t.setMontant(7445445);
