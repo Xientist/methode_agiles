@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
@@ -16,9 +17,8 @@
       <Label layoutX="366.0" layoutY="29.0" prefHeight="17.0" prefWidth="143.0" text="Budget: " textFill="WHITE" />
       <Label layoutX="514.0" layoutY="29.0" prefHeight="17.0" prefWidth="49.0" text="\$$$$" textFill="WHITE" />
       <Label layoutX="161.0" layoutY="60.0" prefHeight="17.0" prefWidth="167.0" text="Moyenne des depenses " />
-      <Label layoutX="178.0" layoutY="85.0" prefHeight="17.0" prefWidth="167.0" text="Moyenne annuelle" />
-      <Label layoutX="178.0" layoutY="110.0" prefHeight="17.0" prefWidth="143.0" text="Moyenne mensuelle" />
-      <Label layoutX="178.0" layoutY="137.0" prefHeight="17.0" prefWidth="167.0" text="Moyenne hebdomadaire" />
+      <Label layoutX="178.0" layoutY="100.0" prefHeight="17.0" prefWidth="167.0" text="Moyenne annuelle" />
+      <Label layoutX="178.0" layoutY="127.0" prefHeight="17.0" prefWidth="143.0" text="Moyenne mensuelle" />
       <Line endX="382.0" endY="-18.0" layoutX="315.0" layoutY="88.0" startX="13.0" startY="-18.0" stroke="WHITE" />
       <Label layoutX="154.0" layoutY="170.0" prefHeight="17.0" prefWidth="143.0" text="  Moyenne des gains" />
       <Line endX="381.0" endY="-18.0" layoutX="316.0" layoutY="198.0" startX="-9.0" startY="-18.0" stroke="WHITE" />
@@ -30,5 +30,7 @@
       <Label layoutX="180.0" layoutY="302.0" prefHeight="17.0" prefWidth="234.0" text="Personne 1" />
       <Label layoutX="180.0" layoutY="321.0" prefHeight="17.0" prefWidth="234.0" text="Personne 2" />
       <Label layoutX="180.0" layoutY="343.0" prefHeight="17.0" prefWidth="234.0" text="Personne 3" />
+      <ComboBox fx:id="annee" layoutX="563.0" layoutY="92.0" prefHeight="25.0" prefWidth="118.0" />
+      <Label layoutX="441.0" layoutY="96.0" prefHeight="17.0" prefWidth="92.0" text="Année :" />
    </children>
 </AnchorPane>
