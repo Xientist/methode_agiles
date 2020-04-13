@@ -10,6 +10,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import model.Model;
+import model.Transaction;
 
 public class AjoutTransactionController {
 	 @FXML private TextField transaction,categorie,montant,personne,date,type;
@@ -23,19 +25,20 @@ public class AjoutTransactionController {
 	 
 	 public void ajouterTreansaction(ActionEvent event) throws IOException {
 		 
-		 transaction_c	=	transaction.getText();
-		 categorie_c	=	categorie.getText();
-		 montant_c		=	montant.getText();
-		 personne_c		=	personne.getText();
-		 date_c			=	date.getText();
-		 type_c 		= 	type.getText();
-		 System.out.println(transaction_c);
-		 System.out.println( categorie_c);
-		 System.out.println( montant_c);
-		 System.out.println (personne_c);
-		 System.out.println(date_c);
-		 System.out.println (type_c);
-		
+		 	transaction_c	=	transaction.getText();
+		 	categorie_c	=	categorie.getText();
+		 	montant_c		=	montant.getText();
+		 	personne_c		=	personne.getText();
+		 	date_c			=	date.getText();
+		 	type_c 		= 	type.getText();
+		 	
+		 	System.out.println(transaction_c);
+		 	System.out.println( categorie_c);
+		 	System.out.println( montant_c);
+		 	System.out.println (personne_c);
+		 	System.out.println(date_c);
+		 	System.out.println (type_c);
+		 	
 			Parent parent= FXMLLoader.load(getClass().getResource("/view/acceuil.fxml"));
 	    	Scene scene=new Scene(parent);
 	    	scene.getStylesheets().add(getClass().getResource("/view/application.css").toExternalForm());
