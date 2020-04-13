@@ -60,11 +60,12 @@ public class TransactionDAO {
 			// les getters permettent de rﾃｩcupﾃｩrer les valeurs des attributs souhaitﾃｩs de
 			// nouvArticle
 			ps = con.prepareStatement(
-					"INSERT INTO transaction (ID, Montant, Categorie, Date_T, Personne) VALUES (0, ?, ?, ?,?)");
-			ps.setDouble(1, transaction.getMontant());
-			ps.setString(2, transaction.getCategorie());
-			ps.setDate(3, transaction.getDate_T());
-			ps.setInt(4, transaction.getPersonne());
+					"INSERT INTO transaction (ID, Montant, Categorie, Date_T, Personne) VALUES (?, ?, ?, ?,?)");
+			ps.setInt(1, transaction.getID());
+			ps.setDouble(2, transaction.getMontant());
+			ps.setString(3, transaction.getCategorie());
+			ps.setDate(4, transaction.getDate_T());
+			ps.setInt(5, transaction.getPersonne());
 
 			// Exﾃｩcution de la requﾃｪte
 			retour = ps.executeUpdate();
