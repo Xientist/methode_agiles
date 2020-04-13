@@ -1,35 +1,26 @@
 package controller;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.chart.BarChart;
-import javafx.scene.chart.CategoryAxis;
-import javafx.scene.chart.NumberAxis;
-import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 
-public class StatistiquesController  implements Initializable {
+public class StatistiquesController {
+
 	@FXML private Button acceuil,transactions,statistiques,predictions;
 	//@FXML private Label budget,label;
-
-    @Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-
-   
-		
-	}
 	
-	 
+  @FXML private ComboBox categorie;
+	
+  public void initialize() {
+	    categorie.getItems().addAll("dernier mois","6 derniers mois" ,"derniere annee", "deux annees dernieres");
+	    }
 	 public void goToAcceuil(ActionEvent event) throws IOException {
 			
 			Parent parent= FXMLLoader.load(getClass().getResource("/view/acceuil.fxml"));
@@ -69,7 +60,4 @@ public class StatistiquesController  implements Initializable {
 	    	window.show();
 	    	
 		}
-
-	
-
 }
