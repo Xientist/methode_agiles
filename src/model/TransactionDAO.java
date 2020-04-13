@@ -60,7 +60,7 @@ public class TransactionDAO {
 			// les getters permettent de rﾃｩcupﾃｩrer les valeurs des attributs souhaitﾃｩs de
 			// nouvArticle
 			ps = con.prepareStatement(
-					"INSERT INTO transaction (ID,Monatnt, Categorie, Date_T, Personne) VALUES (0, ?, ?, ?,?)");
+					"INSERT INTO transaction (ID, Montant, Categorie, Date_T, Personne) VALUES (0, ?, ?, ?,?)");
 			ps.setDouble(1, transaction.getMontant());
 			ps.setString(2, transaction.getCategorie());
 			ps.setDate(3, transaction.getDate_T());
