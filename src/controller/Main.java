@@ -14,7 +14,27 @@ public class Main extends Application {
     @Override
   public void start(Stage primaryStage) throws Exception
     {      
-		 
+		  // requette pour check si un compte existe
+    	Boolean exist=true;
+    	
+    	if(exist) {
+    
+    		Parent root = FXMLLoader.load(getClass().getResource("/view/connexion.fxml"));
+            Scene scene = new Scene(root);
+    		scene.getStylesheets().add(getClass().getResource("/view/application.css").toExternalForm());
+            primaryStage.setTitle("Gestionnaire financier");
+            primaryStage.setScene(scene);
+            primaryStage.show();
+    	}
+    	else {
+    		
+    		Parent root = FXMLLoader.load(getClass().getResource("/view/creationcompte.fxml"));
+            Scene scene = new Scene(root);
+    		scene.getStylesheets().add(getClass().getResource("/view/application.css").toExternalForm());
+            primaryStage.setTitle("Gestionnaire financier");
+            primaryStage.setScene(scene);
+            primaryStage.show();
+    	}
 		// t.setMontant(7445445);
 		 //bd.update(t);
 		  //bd.insert(salaire);
@@ -24,12 +44,7 @@ public class Main extends Application {
     	 //  bd.importTransaction("U:/Agiles/data.xlsx");
     	
     	// requette pour setting le mot de passe 
-        Parent root = FXMLLoader.load(getClass().getResource("/view/connexion.fxml"));
-        Scene scene = new Scene(root);
-		scene.getStylesheets().add(getClass().getResource("/view/application.css").toExternalForm());
-        primaryStage.setTitle("Gestionnaire financier");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+      
        
     }
   
