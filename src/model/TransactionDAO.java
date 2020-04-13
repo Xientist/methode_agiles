@@ -49,20 +49,20 @@ public class TransactionDAO {
         PreparedStatement ps = null;
         int retour = 0;
 
-        //connexion à la base de données
+        //connexion ﾃ� la base de donnﾃｩes
         try {
 
             //tentative de connexion
             con = DriverManager.getConnection(URL, LOGIN, PASS);
-            //préparation de l'instruction SQL, chaque ? représente une valeur à communiquer dans l'insertion
-            //les getters permettent de récupérer les valeurs des attributs souhaités de nouvArticle
+            //prﾃｩparation de l'instruction SQL, chaque ? reprﾃｩsente une valeur ﾃ� communiquer dans l'insertion
+            //les getters permettent de rﾃｩcupﾃｩrer les valeurs des attributs souhaitﾃｩs de nouvArticle
             ps = con.prepareStatement("INSERT INTO transaction (ID,Monatnt, Categorie, Date_T, Personne) VALUES (0, ?, ?, ?,?)");
             ps.setDouble(1, transaction.getMontant());
             ps.setString(2, transaction.getCategorie());
             ps.setDate(3, transaction.getDate_T());
             ps.setInt(4, transaction.getPersonne());
 
-            //Exécution de la requête
+            //Exﾃｩcution de la requﾃｪte
             retour = ps.executeUpdate();
 
         } catch (Exception ee) {
@@ -93,7 +93,7 @@ public class TransactionDAO {
         ResultSet rs = null;
         int retour = 0;
 
-        //connexion à la base de données
+        //connexion ﾃ� la base de donnﾃｩes
         try {
             //tentative de connexion
             con = DriverManager.getConnection(URL, LOGIN, PASS);
@@ -101,12 +101,12 @@ public class TransactionDAO {
             //verifier si la transaction exist 
             ps2 = con.prepareStatement("SELECT * FROM transaction WHERE ID=?");
             ps2.setInt(1, id);
-            //Exécution de la requête
+            //Exﾃｩcution de la requﾃｪte
             rs = ps2.executeQuery();
             if (rs.next()) {
                 ps1 = con.prepareStatement("DELETE FROM transaction WHERE ID=?");
                 ps1.setInt(1, id);
-                //Exécution de la requête
+                //Exﾃｩcution de la requﾃｪte
                 ps1.executeUpdate();
 
                 System.out.println("well deleted");
@@ -141,17 +141,17 @@ public class TransactionDAO {
         ResultSet rs = null;
         Transaction retour = null;
 
-        //connexion à la base de données
+        //connexion ﾃ� la base de donnﾃｩes
         try {
 
             con = DriverManager.getConnection(URL, LOGIN, PASS);
             ps = con.prepareStatement("SELECT * FROM transaction WHERE transaction.ID = ?");
             ps.setInt(1, id);
               
-            //on exécute la requête
-            //rs contient un pointeur situé jusute avant la première ligne retournée
+            //on exﾃｩcute la requﾃｪte
+            //rs contient un pointeur situﾃｩ jusute avant la premiﾃｨre ligne retournﾃｩe
             rs = ps.executeQuery();
-            //passe à la première (et unique) ligne retournée 
+            //passe ﾃ� la premiﾃｨre (et unique) ligne retournﾃｩe 
             if (rs.next()) {
                 retour = new Transaction(rs.getInt("ID"), rs.getDouble("Montant"), rs.getString("Categorie"), rs.getDate("Date_T"), rs.getInt("Personne"));
             }
@@ -191,15 +191,15 @@ public class TransactionDAO {
         ResultSet rs = null;
         List<Transaction> retour = new ArrayList<Transaction>();
 
-        //connexion à la base de données
+        //connexion ﾃ� la base de donnﾃｩes
         try {
 
             con = DriverManager.getConnection(URL, LOGIN, PASS);
             ps = con.prepareStatement("SELECT * FROM Transaction");
 
-            //on exécute la requête
+            //on exﾃｩcute la requﾃｪte
             rs = ps.executeQuery();
-            //on parcourt les lignes du résultat
+            //on parcourt les lignes du rﾃｩsultat
             while (rs.next()) {
                 retour.add(new Transaction(rs.getInt("ID"), rs.getDouble("Montant"), rs.getString("Categorie"), rs.getDate("Date_T"), rs.getInt("Personne")));
             }
@@ -238,7 +238,7 @@ public class TransactionDAO {
         ResultSet rs = null;
         Transaction retour = null;
 
-        //connexion à la base de données
+        //connexion ﾃ� la base de donnﾃｩes
         try {
 
             con = DriverManager.getConnection(URL, LOGIN, PASS);
@@ -248,11 +248,11 @@ public class TransactionDAO {
             ps.setDate(3, t.getDate_T());
             ps.setInt(4, t.getPersonne());
              ps.setInt(5, t.getID());
-            //on exécute la requête
-            //rs contient un pointeur situé jusute avant la première ligne retournée
+            //on exﾃｩcute la requﾃｪte
+            //rs contient un pointeur situﾃｩ jusute avant la premiﾃｨre ligne retournﾃｩe
            
                ps.executeUpdate();
-            //passe à la première (et unique) ligne retournée          
+            //passe ﾃ� la premiﾃｨre (et unique) ligne retournﾃｩe          
 
         } catch (Exception ee) {
             ee.printStackTrace();
