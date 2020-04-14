@@ -37,7 +37,7 @@ public class TransactionsController implements Initializable{
 	
 	
 	private ObservableList<Transaction> transacts;
-	private List<Transaction> transacs;
+
 	
 	@FXML private Button acceuil,transactions,statistiques,predictions;
 	@FXML private TableView<Transaction> tvData;
@@ -57,7 +57,8 @@ public class TransactionsController implements Initializable{
 		 categorie.setCellValueFactory(new PropertyValueFactory<>("categorie"));
 		 personne.setCellValueFactory(new PropertyValueFactory<>("personne"));
 		 date.setCellValueFactory(new PropertyValueFactory<>("date_T"));
-		transacs = Model.getTransactionInstance().getListeTransaction();
+		
+		
 		 ObservableList<Transaction> listTransaction = returnTransact();
 		 tvData.setItems(listTransaction);
 		 

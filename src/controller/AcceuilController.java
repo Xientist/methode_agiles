@@ -1,31 +1,121 @@
 package controller;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import model.Model;
 
-public class AcceuilController {
+public class AcceuilController implements Initializable{
 
 	@FXML private Button acceuil,transactions,statistiques,predictions;
-	//@FXML private Label budget,label;
+	@FXML private Label budget;
+	@FXML private Label moyenneMensuelleDepense;
+	@FXML private Label moyenneAnnuelleDepense;
+	@FXML private Label moyenneMensuelleGains;
+	@FXML private Label moyenneAnnuelleGains;
+	@FXML private Label  moyenneHebdomadaireGains;
+	@FXML private Label moyenneHebdomadaireDepense;
+	@FXML private Label personne1;
+	@FXML private Label personne2;
+	@FXML private Label personne3;
 	@FXML private ComboBox<String> annee;
-	 public void initialize() {
-	    //   budget.setText("$$$$");
+ 
+	
+	
+	@Override
+	 public void initialize(URL location, ResourceBundle ressources) {
 		
-	        annee.getItems().addAll(
-	            "2019",
-	            "2018",
-	            "2020"
-	        );
-
+		 ArrayList<String> listYears = (ArrayList<String>) Model.getTransactionInstance().getYears();
+		 
+		 for(String year : listYears) {
+			 annee.getItems().add(year);
+		 }
+	 
+		chargementDonnees();
+			
+		annee.setOnAction(new EventHandler<ActionEvent>() {
+			
+			@Override
+			public void handle(ActionEvent event) {
+				 int year = Integer.parseInt(annee.getSelectionModel().getSelectedItem().toString());
+				 double moyMensuelleDepense = Model.getTransactionInstance().AVG_Depense_M(year);
+				 
+				 double moyHebdoDepense = Model.getTransactionInstance().AVG_Revenu_H(year);
+				 
+				 double moyMensuelleGains = Model.getTransactionInstance().AVG_Revenu_M(year);
+				 //double moyAnnuelleGains = Model.getTransactionInstance();
+				 
+				 double moyHebdoGains = Model.getTransactionInstance().AVG_Revenu_H(year);
+				 
+				 moyenneMensuelleDepense.setText(String.valueOf(moyMensuelleDepense)+" €");
+				 moyenneHebdomadaireDepense.setText(String.valueOf(moyHebdoDepense)+ " €");
+				 moyenneMensuelleGains.setText(String.valueOf(moyMensuelleGains)+ " €");
+				 //moyenneAnnuelleGains.setText(String.valueOf(moyAnnuelleGains)+ " €");
+				 moyenneHebdomadaireGains.setText(String.valueOf(moyHebdoGains)+ " €");
+				 
+				
+				
+			}
+		});
+	   
+   
 	    }
+	
+	private void chargementDonnees() {
+		double budgetValue = Model.getTransactionInstance().BudgetGlobal();
+		budget.setText(String.valueOf(budgetValue)+" €");
+	    
+	    //
+	    annee.getSelectionModel().selectFirst();
+	    int year = Integer.parseInt(annee.getSelectionModel().getSelectedItem().toString());
+		 double moyMensuelleDepense = Model.getTransactionInstance().AVG_Depense_M(year);
+		 
+		 double moyHebdoDepense = Model.getTransactionInstance().AVG_Revenu_H(year);
+		 
+		 double moyMensuelleGains = Model.getTransactionInstance().AVG_Revenu_M(year);
+		 //double moyAnnuelleGains = Model.getTransactionInstance();
+		 
+		 double moyHebdoGains = Model.getTransactionInstance().AVG_Revenu_H(year);
+		 
+		 moyenneMensuelleDepense.setText(String.valueOf(moyMensuelleDepense)+" €");
+		 moyenneHebdomadaireDepense.setText(String.valueOf(moyHebdoDepense)+ " €");
+		 moyenneMensuelleGains.setText(String.valueOf(moyMensuelleGains)+ " €");
+		 //moyenneAnnuelleGains.setText(String.valueOf(moyAnnuelleGains)+ " €");
+		 moyenneHebdomadaireGains.setText(String.valueOf(moyHebdoGains)+ " €");
+		 
+		 Map<String, String> personnes = Model.getTransactionInstance().MAX_depense(year);
+	
+		 String eachpersonne[] = new String[5];
+		 int i=0;
+		 for(Map.Entry<String,String> p: personnes.entrySet()) {
+			 eachpersonne[i] = " " +p.getKey() + " à depensé(e) "+ p.getValue()+" €";
+			++i;
+		
+		 }
+			
+		 	
+			personne1.setText(eachpersonne[0]);
+			personne2.setText(eachpersonne[1]);
+			personne3.setText(eachpersonne[2]);
+		 
+			
+	}
 	 
 	 public void goToAcceuil(ActionEvent event) throws IOException {
 			
