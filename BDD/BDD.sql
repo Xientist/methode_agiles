@@ -37,19 +37,6 @@ CREATE TABLE `personne` (
 -- Déchargement des données de la table `personne`
 --
 
-INSERT INTO `personne` (`Nom`, `ID`) VALUES
-('jj', 1),
-('donii', 2),
-('xxx', 3),
-('donii', 4),
-('xxx', 5),
-('jh', 6),
-('ennech', 7),
-('ennech', 8),
-('ennech', 9),
-('ennech', 10),
-('ennech', 11),
-('ennech', 12);
 
 -- --------------------------------------------------------
 
@@ -68,22 +55,6 @@ CREATE TABLE `transaction` (
 --
 -- Déchargement des données de la table `transaction`
 --
-
-INSERT INTO `transaction` (`ID`, `Montant`, `Categorie`, `personne`, `Date_T`) VALUES
-(1, 1545, 'depense', 2, '2020-02-01'),
-(6, 7, 'Revenu', 1, '2020-04-08'),
-(7, 8, 'depense', 3, '2020-03-05'),
-(8, 3, 'Revenu', 2, '2020-03-18'),
-(9, 3, 'depense', 1, '2020-03-18'),
-(10, 87, 'depense', 1, '2019-03-14'),
-(11, 87, 'Revenu', 1, '2019-03-14'),
-(12, 1000, 'income', 1, '2015-03-30'),
-(13, 1000, 'income', 1, '2015-03-30'),
-(14, 1000, 'income', 1, '2015-03-30'),
-(15, 7676, 'hghg', 1, '2020-05-31'),
-(16, 7676, 'aa', 1, '2020-05-30'),
-(17, 5454.7, 'bb', 2, '2018-06-03'),
-(18, 1000, 'cc', 3, '2017-11-06');
 
 -- --------------------------------------------------------
 
