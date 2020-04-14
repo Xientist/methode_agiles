@@ -14,7 +14,6 @@ public class UserDAO {
 	
 	
 	public UserDAO() {
-		System.out.println("exist");
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 		} catch (ClassNotFoundException e2) {
@@ -22,23 +21,21 @@ public class UserDAO {
 		}
 	}
 	
-	public int verifyUser(String mdp) {
+	public boolean verifyUser() {
 		
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
+		boolean exist=false;
 		
 		try {
 
 			con = DriverManager.getConnection(URL, LOGIN, PASS);
-			ps = con.prepareStatement("SELECT * FROM utilisateur WHERE Passeword=?");
-			ps.setString(1, mdp);
+			ps = con.prepareStatement("SELECT * FROM utilisateur");
 			rs = ps.executeQuery();
 			if (rs.next()) {
-				System.out.println("exist");
-				//retour = new Personne(rs.getInt("ID"), rs.getString("Nom"));
-			}else 
-				System.out.println("exist pas ");
+				exist=true;
+			}
 
 		} catch (Exception ee) {
 			ee.printStackTrace();
@@ -67,7 +64,7 @@ public class UserDAO {
 		
 		
 		
-		return 0;
+		return exist;
 	}
 	
 	

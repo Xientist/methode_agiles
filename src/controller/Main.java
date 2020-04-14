@@ -16,9 +16,8 @@ public class Main extends Application {
   public void start(Stage primaryStage) throws Exception
     {      
 		  // requette pour check si un compte existe
-    	Boolean exist=true;
-    	int d = Model.getUserInstance().verifyUser("lol");
-    	System.out.println(d);
+    	Boolean exist= Model.getUserInstance().verifyUser();
+    	
     	if(exist) {
     
     		Parent root = FXMLLoader.load(getClass().getResource("/view/connexion.fxml"));
@@ -63,7 +62,7 @@ public class Main extends Application {
 //    	for(Transaction t :bd.getListeTransaction()) {
 //    		System.out.println(t.getCategorie());
 //    	}
-    	System.out.println("exist");
+    	
        launch(args);
     }
 }
