@@ -16,7 +16,7 @@
       <Button fx:id="statistiques" layoutY="112.0" mnemonicParsing="false" onAction="#goToStatistiques" prefHeight="25.0" prefWidth="143.0" text="Statistiques" />
       <Button fx:id="predictions" layoutY="145.0" mnemonicParsing="false" onAction="#goToPrediction" prefHeight="25.0" prefWidth="143.0" text="Prédictions" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#122540" height="393.0" layoutX="143.0" layoutY="3.0" stroke="WHITE" strokeType="INSIDE" width="554.0" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="143.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="3.0" />
-      <BarChart fx:id="revenu" alternativeColumnFillVisible="true" layoutX="418.0" layoutY="80.0" prefHeight="265.0" prefWidth="279.0">
+      <BarChart fx:id="revenu" layoutX="416.0" layoutY="80.0" prefHeight="265.0" prefWidth="279.0">
         <xAxis>
           <CategoryAxis side="BOTTOM" fx:id="xr" />
         </xAxis>
@@ -24,7 +24,7 @@
           <NumberAxis fx:id="yr" minorTickVisible="false" side="LEFT" />
         </yAxis>
       </BarChart>
-      <BarChart fx:id="depense" horizontalZeroLineVisible="false" layoutX="152.0" layoutY="80.0" prefHeight="265.0" prefWidth="279.0" verticalGridLinesVisible="false" verticalZeroLineVisible="false">
+      <BarChart fx:id="depense" horizontalZeroLineVisible="false" layoutX="151.0" layoutY="80.0" prefHeight="265.0" prefWidth="279.0" verticalGridLinesVisible="false" verticalZeroLineVisible="false">
          <xAxis>
             <CategoryAxis focusTraversable="true" side="BOTTOM" fx:id="x" />
          </xAxis>

@@ -7,6 +7,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
@@ -14,12 +18,24 @@ public class PredictionsController {
 
 	@FXML private Button acceuil,transactions,statistiques,predictions;
 	//@FXML private Label budget,label;
-	
+    @FXML
+    private LineChart<?, ?> prediction;
+
+    @FXML
+    private CategoryAxis x;
+
+    @FXML
+    private NumberAxis y;
 
 	
 	 public void initialize() {
 	    
-		 
+		 XYChart.Series d= new  	XYChart.Series<>();
+     	// une boucle pour ajouter plusieurs valuers
+			d.getData().add(new XYChart.Data<>("1",2));
+			d.getData().add(new XYChart.Data<>("2",10));
+			d.getData().add(new XYChart.Data<>("3",5));
+			prediction.getData().addAll(d);
 		 
 	    }
 	 
