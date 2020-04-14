@@ -2,6 +2,8 @@ package model;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.util.Arrays;
+import java.util.HashMap;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -16,25 +18,29 @@ import java.sql.Date;
 public class TestDAO {
     
     public static void main(String[] args) throws IOException {
-        Personne dounya = new Personne("ennech");
- //Transaction salaire = new Transaction(0,1000, "income",Date.valueOf("2015-03-31"), );        
-        TransactionDAO bd = new TransactionDAO();
-       // salaire.setMontant(954878987);
+        //Personne dounya = new Personne("ennech");
+    Transaction salaire = new Transaction(0,1000, "income",Date.valueOf("2015-03-31"), 1);        
+      TransactionDAO bd = new TransactionDAO();
+      bd.insert(salaire);
+    	// salaire.setMontant(954878987);'rgeg
    
-      // System.out.println(bd.getTransaction(0).getCategorie());
-    //   bd.getListeTransaction();
-  /*     for(Transaction t :bd.getListeTransaction()) {
-		System.out.println(t.getCategorie());
-	}*/
+    	// System.out.println(bd.getTransaction(0).getCategorie());
+    	//bd.getYears();
+    	//System.out.println(Arrays.asList(bd.Stats_R(4)));
+		
+    	//PersonneDAO p = new PersonneDAO();
+    	//p.insertPersone(dounya);
+    	//System.out.println(p.getPersonById(7).getNom());
+    	//System.out.println(bd.AVG_Depense_H(2020));
        
-      // t.setMontant(7445445);
-       //bd.update(t);
+    	// t.setMontant(7445445);
+    	//bd.update(t);
         //bd.insert(salaire);
-       // bd.getListeTransaction();
-      // bd.getTransaction(1);
+    	// bd.getListeTransaction();
+    	// bd.getTransaction(1);
        
- bd.importTransaction("U:/Agiles/data.xlsx");
-  // bd.Delete(5);
+
+    	// bd.Delete(5);
     }
     
 }

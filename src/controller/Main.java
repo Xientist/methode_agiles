@@ -14,7 +14,27 @@ public class Main extends Application {
     @Override
   public void start(Stage primaryStage) throws Exception
     {      
-		 
+		  // requette pour check si un compte existe
+    	Boolean exist=true;
+    	
+    	if(exist) {
+    
+    		Parent root = FXMLLoader.load(getClass().getResource("/view/connexion.fxml"));
+            Scene scene = new Scene(root);
+    		scene.getStylesheets().add(getClass().getResource("/view/application.css").toExternalForm());
+            primaryStage.setTitle("Gestionnaire financier");
+            primaryStage.setScene(scene);
+            primaryStage.show();
+    	}
+    	else {
+    		
+    		Parent root = FXMLLoader.load(getClass().getResource("/view/creationcompte.fxml"));
+            Scene scene = new Scene(root);
+    		scene.getStylesheets().add(getClass().getResource("/view/application.css").toExternalForm());
+            primaryStage.setTitle("Gestionnaire financier");
+            primaryStage.setScene(scene);
+            primaryStage.show();
+    	}
 		// t.setMontant(7445445);
 		 //bd.update(t);
 		  //bd.insert(salaire);
@@ -24,27 +44,24 @@ public class Main extends Application {
     	 //  bd.importTransaction("U:/Agiles/data.xlsx");
     	
     	// requette pour setting le mot de passe 
-        Parent root = FXMLLoader.load(getClass().getResource("/view/connexion.fxml"));
-        Scene scene = new Scene(root);
-		scene.getStylesheets().add(getClass().getResource("/view/application.css").toExternalForm());
-        primaryStage.setTitle("Gestionnaire financier");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+      
        
     }
   
 
     public static void main(String[] args) {
-     	System.out.println("xouxou");
- 	   Personne dounya = new Personne("ennech");
- 	   //Transaction salaire = new Transaction(0,1000, "income",Date.valueOf("2015-03-31"), );        
- 	   TransactionDAO bd = new TransactionDAO();
- 	   // salaire.setMontant(954878987);
-		 // System.out.println(bd.getTransaction(0).getCategorie());
- 	   bd.getListeTransaction();
- 	   for(Transaction t :bd.getListeTransaction()) {
-			System.out.println(t.getCategorie());
- 	   }
+    	
+//    	System.out.println("xouxou");
+//    	Personne dounya = new Personne("ennech");
+//    	Transaction salaire = new Transaction(0,1000, "income",Date.valueOf("2015-03-31"), );        
+//    	TransactionDAO bd = new TransactionDAO();
+//    	salaire.setMontant(954878987);
+//    	System.out.println(bd.getTransaction(0).getCategorie());
+//    	bd.getListeTransaction();
+//    	for(Transaction t :bd.getListeTransaction()) {
+//    		System.out.println(t.getCategorie());
+//    	}
+    	
        launch(args);
     }
 }

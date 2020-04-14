@@ -1,6 +1,10 @@
 package controller;
 
-import java.awt.List;
+
+
+
+import java.util.List;
+
 import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
@@ -17,9 +21,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+
 import model.Personne;
+import model.Model;
 import model.Transaction;
-import model.TransactionDAO;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
@@ -30,20 +36,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public class TransactionsController implements Initializable{
 	
 	
-	private TransactionDAO transationDao;
 	private ObservableList<Transaction> transacts;
-	
-	/*@FXML private Button btnAjouter;
-	@FXML private Button btnAnnuler;
-	
-	@FXML private TextField textFiledTransaction;
-	@FXML private TextField textFiledCategorie;
-	@FXML private TextField textFiledMontant;
-	@FXML private TextField textFiledPersonne;
-	@FXML private TextField textFiledDate;*/
-
-	
-	
+	private List<Transaction> transacs;
 	
 	@FXML private Button acceuil,transactions,statistiques,predictions;
 	@FXML private TableView<Transaction> tvData;
@@ -52,8 +46,6 @@ public class TransactionsController implements Initializable{
 	@FXML public TableColumn<Transaction, String> categorie;
 	@FXML public TableColumn<Transaction, Personne> personne;
 	@FXML public TableColumn<Transaction, Date> date;
-	
-	
 	
 	
 	@Override
@@ -65,7 +57,7 @@ public class TransactionsController implements Initializable{
 		 categorie.setCellValueFactory(new PropertyValueFactory<>("categorie"));
 		 personne.setCellValueFactory(new PropertyValueFactory<>("personne"));
 		 date.setCellValueFactory(new PropertyValueFactory<>("date_T"));
-		 
+		transacs = Model.getTransactionInstance().getListeTransaction();
 		 ObservableList<Transaction> listTransaction = returnTransact();
 		 tvData.setItems(listTransaction);
 		 
@@ -73,7 +65,7 @@ public class TransactionsController implements Initializable{
 		
 	 }
 	
-	
+
 	 public void goToAjoutTransaction(ActionEvent event) throws IOException {
 			
 			Parent parent= FXMLLoader.load(getClass().getResource("/view/ajouttransaction.fxml"));
@@ -97,6 +89,7 @@ public class TransactionsController implements Initializable{
 	    	window.show();
 	    	
 		}
+	 
 	 public void goToTransaction(ActionEvent event) throws IOException {
 			
 			Parent parent= FXMLLoader.load(getClass().getResource("/view/transactions.fxml"));
@@ -106,7 +99,9 @@ public class TransactionsController implements Initializable{
 	    	window.setScene(scene);
 	    	window.show();
 	    	
-		} public void goToStatistiques(ActionEvent event) throws IOException {
+		} 
+	 
+	 public void goToStatistiques(ActionEvent event) throws IOException {
 			
 			Parent parent= FXMLLoader.load(getClass().getResource("/view/statistiques.fxml"));
 	    	Scene scene=new Scene(parent);
@@ -116,9 +111,10 @@ public class TransactionsController implements Initializable{
 	    	window.show();
 	    	
 		}
+	 
 	 public void goToPrediction(ActionEvent event) throws IOException {
 			
-			Parent parent= FXMLLoader.load(getClass().getResource("/view/acceuil.fxml"));
+			Parent parent= FXMLLoader.load(getClass().getResource("/view/predictions.fxml"));
 	    	Scene scene=new Scene(parent);
 	    	scene.getStylesheets().add(getClass().getResource("/view/application.css").toExternalForm());
 	    	Stage window = (Stage) acceuil.getScene().getWindow();
@@ -128,8 +124,8 @@ public class TransactionsController implements Initializable{
 		}
 	 
 	 private ObservableList<Transaction> returnTransact() {
-		 transationDao = new TransactionDAO();
-		ArrayList<Transaction> lists = (ArrayList<Transaction>) transationDao.getListeTransaction();
+		
+		ArrayList<Transaction> lists = (ArrayList<Transaction>) Model.getTransactionInstance().getListeTransaction();
 		transacts = FXCollections.observableArrayList();
 		
 		for(Transaction t : lists) {
@@ -139,9 +135,12 @@ public class TransactionsController implements Initializable{
 		return transacts;
 	}
 	 
-	
-	 
-	
-	     
-	
+	 public void ajouterviaCSV(ActionEvent event) throws IOException {
+		 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/filechooser.fxml"));
+	    	Parent root1 = (Parent) fxmlLoader.load();
+	    	Stage stage = new Stage();
+	    	stage.setScene(new Scene(root1));  
+	    	stage.show();
+	 }
+
 }

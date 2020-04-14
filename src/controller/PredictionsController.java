@@ -8,19 +8,21 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 
-public class StatistiquesController {
+public class PredictionsController {
 
 	@FXML private Button acceuil,transactions,statistiques,predictions;
 	//@FXML private Label budget,label;
 	
-  @FXML private ComboBox categorie;
+
 	
-  public void initialize() {
-	    categorie.getItems().addAll("dernier mois","6 derniers mois" ,"derniere annee", "deux annees dernieres");
+	 public void initialize() {
+	    
+		 
+		 
 	    }
+	 
 	 public void goToAcceuil(ActionEvent event) throws IOException {
 			
 			Parent parent= FXMLLoader.load(getClass().getResource("/view/acceuil.fxml"));
