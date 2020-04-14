@@ -756,13 +756,15 @@ public class TransactionDAO {
 					case 1:
 						String Categorie = nextCell.getStringCellValue();
 						statement.setString(2, Categorie);
+						break;
 					case 2:
-						// Date Date_T = Date.valueOf(nextCell.getLocalDateTimeCellValue().toString());
-						statement.setDate(3, Date.valueOf("2021-06-06"));
+						Date Date_T = Date.valueOf(nextCell.getLocalDateTimeCellValue().toLocalDate());
+						statement.setDate(3, Date_T);
 						break;
 					case 3:
 						int Personne = (int) nextCell.getNumericCellValue();
 						statement.setInt(4, Personne);
+						break;
 					}
 
 				}

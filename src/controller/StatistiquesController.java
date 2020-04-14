@@ -18,9 +18,11 @@ public class StatistiquesController {
 	
   @FXML private ComboBox categorie;
 	
-  public void initialize() {
-	    categorie.getItems().addAll("dernier mois","6 derniers mois" ,"derniere annee", "deux annees dernieres");
+  	public void initialize() {
+  		
+  			categorie.getItems().addAll("Le mois dernier","Les 6 derniers mois" ,"L'année dernière", "Les deux dernières années");
 	    }
+  
 	 public void goToAcceuil(ActionEvent event) throws IOException {
 			
 			Parent parent= FXMLLoader.load(getClass().getResource("/view/acceuil.fxml"));
