@@ -21,13 +21,14 @@ public class TestDAO {
         //Personne dounya = new Personne("ennech");
     Transaction salaire = new Transaction(0,1000, "income",Date.valueOf("2015-03-31"), 1);        
       TransactionDAO bd = new TransactionDAO();
-     bd.importTransaction("Excel_Importation/transaction.xlsx");
-     
+       System.out.println(bd.SUM_D(2020));
+    // bd.importTransaction("Excel_Importation/transaction.xlsx");
+    // bd.Stats_D(1);
     	// salaire.setMontant(954878987);'rgeg
    
     	// System.out.println(bd.getTransaction(0).getCategorie());
     	//bd.getYears();
-    	//System.out.println(Arrays.asList(bd.Stats_R(4)));
+    	System.out.println(Arrays.asList(bd.Stats_R(1)));
 		
     	//PersonneDAO p = new PersonneDAO();
     	//p.insertPersone(dounya);

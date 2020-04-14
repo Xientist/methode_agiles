@@ -532,6 +532,100 @@ public class TransactionDAO {
 		}
 		return retour;
 	}
+	
+	// Somme  annuelle des revenus
+		public double SUM_R(int annee) {
+
+			Connection con = null;
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			double retour = 0;
+
+			try {
+
+				con = DriverManager.getConnection(URL, LOGIN, PASS);
+				ps = con.prepareStatement(
+						"SELECT SUM(Montant) as 'somme' FROM `transaction` WHERE Categorie ='Revenu' and year(Date_T)=?");
+				ps.setInt(1, annee);
+
+				rs = ps.executeQuery();
+
+				if (rs.next()) {
+					retour = rs.getDouble("somme");
+				}
+
+			} catch (Exception ee) {
+				ee.printStackTrace();
+			} finally {
+
+				try {
+					if (rs != null) {
+						rs.close();
+					}
+				} catch (Exception t) {
+				}
+				try {
+					if (ps != null) {
+						ps.close();
+					}
+				} catch (Exception t) {
+				}
+				try {
+					if (con != null) {
+						con.close();
+					}
+				} catch (Exception t) {
+				}
+			}
+			return retour;
+		}
+
+		// Somme  annuelle des depenses
+		public double SUM_D(int annee) {
+
+			Connection con = null;
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			double retour = 0;
+
+			try {
+
+				con = DriverManager.getConnection(URL, LOGIN, PASS);
+				ps = con.prepareStatement(
+						"SELECT SUM(Montant) as 'somme' FROM `transaction` WHERE Categorie ='Depense' and year(Date_T)=?");
+				ps.setInt(1, annee);
+
+				rs = ps.executeQuery();
+
+				if (rs.next()) {
+					retour = rs.getDouble("somme");
+				}
+
+			} catch (Exception ee) {
+				ee.printStackTrace();
+			} finally {
+
+				try {
+					if (rs != null) {
+						rs.close();
+					}
+				} catch (Exception t) {
+				}
+				try {
+					if (ps != null) {
+						ps.close();
+					}
+				} catch (Exception t) {
+				}
+				try {
+					if (con != null) {
+						con.close();
+					}
+				} catch (Exception t) {
+				}
+			}
+			return retour;
+		}
 
 //les 3 personne ayant plus depense
 	public Map<String, String> MAX_depense(int annee) {
