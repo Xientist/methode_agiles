@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import model.Model;
 import model.Personne;
 import model.Transaction;
 import model.TransactionDAO;
@@ -15,7 +16,7 @@ public class Main extends Application {
   public void start(Stage primaryStage) throws Exception
     {      
 		  // requette pour check si un compte existe
-    	Boolean exist=true;
+    	Boolean exist= Model.getUserInstance().verifyUser();
     	
     	if(exist) {
     
