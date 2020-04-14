@@ -35,6 +35,8 @@ public class TransactionDAO {
 	final static String URL = "jdbc:mysql://localhost:3306/budget_managment?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 	final static String LOGIN = "root";
 	final static String PASS = "";
+	
+	private final int LAST_MONTH = 1, SIX_MONTHS = 2, LAST_YEAR = 3, TWO_YEARS = 4;
 
 	public TransactionDAO() {
 		try {
@@ -672,17 +674,17 @@ public class TransactionDAO {
 	}
 
 //statistques Revenu
-	public Map<String, String> Stats_R(int filtre) {
+	public TreeMap<String, String> Stats_R(int filtre) {
 		final int LAST_MONTH = 1, SIX_MONTHS = 2, LAST_YEAR = 3, TWO_YEARS = 4;
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		Map<String, String> retour = new HashMap<String, String>();
+		TreeMap<String, String> retour = new TreeMap<String, String>();
 
 		try {
 
 			con = DriverManager.getConnection(URL, LOGIN, PASS);
-			if (filtre == 1) {
+			if (filtre == LAST_MONTH) {
 				ps = con.prepareStatement(
 						"SELECT SUM(Montant) as 'montant', Date_T as'day' FROM `transaction` WHERE Date_T >= DATE_SUB( CURRENT_DATE, INTERVAL 1 Month )and Categorie='Revenu' GROUP by  day(Date_T) ");
 				rs = ps.executeQuery();
@@ -690,25 +692,25 @@ public class TransactionDAO {
 					retour.put(String.valueOf(rs.getString("day")), String.valueOf(rs.getDouble("montant")));
 				}
 
-			} else if (filtre == 2) {
-				ps = con.prepareStatement("SELECT SUM(Montant) as 'montant', month(Date_T) as'month' FROM `transaction` WHERE Date_T >= DATE_SUB( CURRENT_DATE, INTERVAL 6 Month )and Categorie='Revenu' GROUP by  month(Date_T)");
+			} else if (filtre == SIX_MONTHS) {
+				ps = con.prepareStatement("SELECT SUM(Montant) as 'montant', month(Date_T) as'month', year(Date_T) as'year' FROM `transaction` WHERE Date_T >= DATE_SUB( CURRENT_DATE, INTERVAL 6 Month )and Categorie='Revenu' GROUP by  month(Date_T)");
 				rs = ps.executeQuery();
 				while (rs.next()) {
-					retour.put(String.valueOf(rs.getString("month")), String.valueOf(rs.getDouble("montant")));
+					retour.put(String.valueOf(rs.getString("year") + "-" + rs.getString("month")), String.valueOf(rs.getDouble("montant")));
 				}
-			} else if (filtre == 3) {
-				ps = con.prepareStatement("SELECT SUM(Montant) as 'montant', month(Date_T) as'month' FROM `transaction` WHERE Date_T >= DATE_SUB( CURRENT_DATE, INTERVAL 1 YEAR ) and Categorie='Revenu' GROUP by  month(Date_T)");
+			} else if (filtre == LAST_YEAR) {
+				ps = con.prepareStatement("SELECT SUM(Montant) as 'montant', month(Date_T) as'month', year(Date_T) as'year' FROM `transaction` WHERE Date_T >= DATE_SUB( CURRENT_DATE, INTERVAL 1 YEAR ) and Categorie='Revenu' GROUP by  month(Date_T)");
 				rs = ps.executeQuery();
 				while (rs.next()) {
-					retour.put(String.valueOf(rs.getString("month")), String.valueOf(rs.getDouble("montant")));
+					retour.put(String.valueOf(rs.getString("year") + "-" + rs.getString("month")), String.valueOf(rs.getDouble("montant")));
 				}
 			}
 				else
 				{
-					ps = con.prepareStatement("SELECT SUM(Montant) as 'montant',month(Date_T) as 'month' ,year(Date_T) as 'year' FROM `transaction` WHERE Date_T >= DATE_SUB( CURRENT_DATE, INTERVAL 2 YEAR ) and Categorie='Revenu' GROUP by month(Date_T) DESC,year(Date_T) DESC");
+					ps = con.prepareStatement("SELECT SUM(Montant) as 'montant',month(Date_T) as 'month' ,year(Date_T) as 'year' FROM `transaction` WHERE Date_T >= DATE_SUB( CURRENT_DATE, INTERVAL 2 YEAR ) and Categorie='Revenu' GROUP by month(Date_T)");
 					rs = ps.executeQuery();
 					while (rs.next()) {
-						retour.put(String.valueOf(rs.getString("month"))+'-'+String.valueOf(rs.getString("year")), String.valueOf(rs.getDouble("montant")));
+						retour.put(String.valueOf(rs.getString("year") + "-" + rs.getString("month")), String.valueOf(rs.getDouble("montant")));
 				}
 			}
 
@@ -740,17 +742,17 @@ public class TransactionDAO {
 	}
 
 	//statistques Depense
-		public Map<String, String> Stats_D(int filtre) {
-			final int LAST_MONTH = 1, SIX_MONTHS = 2, LAST_YEAR = 3, TWO_YEARS = 4;
+		public TreeMap<String, String> Stats_D(int filtre) {
+			
 			Connection con = null;
 			PreparedStatement ps = null;
 			ResultSet rs = null;
-			Map<String, String> retour = new HashMap<String, String>();
+			TreeMap<String, String> retour = new TreeMap<String, String>();
 
 			try {
 
 				con = DriverManager.getConnection(URL, LOGIN, PASS);
-				if (filtre == 1) {
+				if (filtre == LAST_MONTH) {
 					ps = con.prepareStatement(
 							"SELECT SUM(Montant) as 'montant', Date_T as'day' FROM `transaction` WHERE Date_T >= DATE_SUB( CURRENT_DATE, INTERVAL 1 Month )and Categorie='Depense' GROUP by  day(Date_T) ");
 					rs = ps.executeQuery();
@@ -758,25 +760,25 @@ public class TransactionDAO {
 						retour.put(String.valueOf(rs.getString("day")), String.valueOf(rs.getDouble("montant")));
 					}
 
-				} else if (filtre == 2) {
-					ps = con.prepareStatement("SELECT SUM(Montant) as 'montant', month(Date_T) as'month' FROM `transaction` WHERE Date_T >= DATE_SUB( CURRENT_DATE, INTERVAL 6 Month )and Categorie='Depense' GROUP by  month(Date_T)");
+				} else if (filtre == SIX_MONTHS) {
+					ps = con.prepareStatement("SELECT SUM(Montant) as 'montant', month(Date_T) as'month', year(Date_T) as'year' FROM `transaction` WHERE Date_T >= DATE_SUB( CURRENT_DATE, INTERVAL 6 Month )and Categorie='Depense' GROUP by  month(Date_T)");
 					rs = ps.executeQuery();
 					while (rs.next()) {
-						retour.put(String.valueOf(rs.getString("month")), String.valueOf(rs.getDouble("montant")));
+						retour.put(String.valueOf(rs.getString("year")+'-'+rs.getString("month")), String.valueOf(rs.getDouble("montant")));
 					}
-				} else if (filtre == 3) {
-					ps = con.prepareStatement("SELECT SUM(Montant) as 'montant', month(Date_T) as'month' FROM `transaction` WHERE Date_T >= DATE_SUB( CURRENT_DATE, INTERVAL 1 YEAR ) and Categorie='Depense' GROUP by  month(Date_T)");
+				} else if (filtre == LAST_YEAR) {
+					ps = con.prepareStatement("SELECT SUM(Montant) as 'montant', month(Date_T) as'month', year(Date_T) as'year' FROM `transaction` WHERE Date_T >= DATE_SUB( CURRENT_DATE, INTERVAL 1 YEAR ) and Categorie='Depense' GROUP by  month(Date_T)");
 					rs = ps.executeQuery();
 					while (rs.next()) {
-						retour.put(String.valueOf(rs.getString("month")), String.valueOf(rs.getDouble("montant")));
+						retour.put(String.valueOf(rs.getString("year")+'-'+rs.getString("month")), String.valueOf(rs.getDouble("montant")));
 					}
 				}
 					else
 					{
-						ps = con.prepareStatement("SELECT SUM(Montant) as 'montant',month(Date_T) as 'month' ,year(Date_T) as 'year' FROM `transaction` WHERE Date_T >= DATE_SUB( CURRENT_DATE, INTERVAL 2 YEAR ) and Categorie='Depense' GROUP by month(Date_T) DESC,year(Date_T) DESC");
+						ps = con.prepareStatement("SELECT SUM(Montant) as 'montant',month(Date_T) as 'month' ,year(Date_T) as 'year' FROM `transaction` WHERE Date_T >= DATE_SUB( CURRENT_DATE, INTERVAL 2 YEAR ) and Categorie='Depense' GROUP by month(Date_T)");
 						rs = ps.executeQuery();
 						while (rs.next()) {
-							retour.put(String.valueOf(rs.getString("month"))+'-'+String.valueOf(rs.getString("year")), String.valueOf(rs.getDouble("montant")));
+							retour.put(String.valueOf(rs.getString("year"))+'-'+String.valueOf(rs.getString("month")), String.valueOf(rs.getDouble("montant")));
 					}
 				}
 
