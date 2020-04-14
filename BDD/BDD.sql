@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 20 fév. 2020 à 08:46
--- Version du serveur :  5.7.21
--- Version de PHP :  7.2.4
+-- Hôte : 127.0.0.1
+-- Généré le : mar. 14 avr. 2020 à 14:59
+-- Version du serveur :  10.4.11-MariaDB
+-- Version de PHP : 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `budget_managment`
+-- Base de données : `budget_managment`
 --
 
 -- --------------------------------------------------------
@@ -28,19 +28,28 @@ SET time_zone = "+00:00";
 -- Structure de la table `personne`
 --
 
-DROP TABLE IF EXISTS `personne`;
-CREATE TABLE IF NOT EXISTS `personne` (
+CREATE TABLE `personne` (
   `Nom` varchar(30) NOT NULL,
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `ID` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `personne`
 --
 
 INSERT INTO `personne` (`Nom`, `ID`) VALUES
-('jj', 1);
+('jj', 1),
+('donii', 2),
+('xxx', 3),
+('donii', 4),
+('xxx', 5),
+('jh', 6),
+('ennech', 7),
+('ennech', 8),
+('ennech', 9),
+('ennech', 10),
+('ennech', 11),
+('ennech', 12);
 
 -- --------------------------------------------------------
 
@@ -48,15 +57,12 @@ INSERT INTO `personne` (`Nom`, `ID`) VALUES
 -- Structure de la table `transaction`
 --
 
-DROP TABLE IF EXISTS `transaction`;
-CREATE TABLE IF NOT EXISTS `transaction` (
+CREATE TABLE `transaction` (
   `ID` int(11) NOT NULL,
   `Montant` double NOT NULL,
   `Categorie` varchar(30) DEFAULT NULL,
   `personne` int(11) NOT NULL,
-  `Date_T` date NOT NULL,
-  PRIMARY KEY (`ID`),
-  KEY `personne` (`personne`)
+  `Date_T` date NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -64,7 +70,20 @@ CREATE TABLE IF NOT EXISTS `transaction` (
 --
 
 INSERT INTO `transaction` (`ID`, `Montant`, `Categorie`, `personne`, `Date_T`) VALUES
-(0, 1545, 'depense', 1, '2020-02-01');
+(1, 1545, 'depense', 2, '2020-02-01'),
+(6, 7, 'Revenu', 1, '2020-04-08'),
+(7, 8, 'depense', 3, '2020-03-05'),
+(8, 3, 'Revenu', 2, '2020-03-18'),
+(9, 3, 'depense', 1, '2020-03-18'),
+(10, 87, 'depense', 1, '2019-03-14'),
+(11, 87, 'Revenu', 1, '2019-03-14'),
+(12, 1000, 'income', 1, '2015-03-30'),
+(13, 1000, 'income', 1, '2015-03-30'),
+(14, 1000, 'income', 1, '2015-03-30'),
+(15, 7676, 'hghg', 1, '2020-05-31'),
+(16, 7676, 'aa', 1, '2020-05-30'),
+(17, 5454.7, 'bb', 2, '2018-06-03'),
+(18, 1000, 'cc', 3, '2017-11-06');
 
 -- --------------------------------------------------------
 
@@ -72,10 +91,42 @@ INSERT INTO `transaction` (`ID`, `Montant`, `Categorie`, `personne`, `Date_T`) V
 -- Structure de la table `utilisateur`
 --
 
-DROP TABLE IF EXISTS `utilisateur`;
-CREATE TABLE IF NOT EXISTS `utilisateur` (
+CREATE TABLE `utilisateur` (
   `Passeword` varchar(50) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Index pour les tables déchargées
+--
+
+--
+-- Index pour la table `personne`
+--
+ALTER TABLE `personne`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Index pour la table `transaction`
+--
+ALTER TABLE `transaction`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `personne` (`personne`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `personne`
+--
+ALTER TABLE `personne`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT pour la table `transaction`
+--
+ALTER TABLE `transaction`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
