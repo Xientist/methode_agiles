@@ -18,12 +18,12 @@
       <Label layoutX="169.0" layoutY="218.0" prefHeight="17.0" prefWidth="173.0" text="Date" />
       <Label layoutX="166.0" layoutY="260.0" prefHeight="17.0" prefWidth="173.0" text="Type" />
       <TextField fx:id="transaction" layoutX="365.0" layoutY="48.0" />
-      <TextField layoutX="365.0" layoutY="92.0" />
-      <TextField layoutX="364.0" layoutY="134.0" />
-      <TextField layoutX="364.0" layoutY="176.0" />
-      <TextField layoutX="364.0" layoutY="215.0" />
-      <TextField layoutX="364.0" layoutY="257.0" />
-      <Button layoutX="339.0" layoutY="321.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="114.0" text="Ajouter" />
-      <Button layoutX="543.0" layoutY="321.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="114.0" text="Annuler" />
+      <TextField fx:id="categorie" layoutX="365.0" layoutY="92.0" />
+      <TextField fx:id="montant" layoutX="364.0" layoutY="134.0" />
+      <TextField fx:id="personne" layoutX="364.0" layoutY="176.0" />
+      <TextField fx:id="date" layoutX="364.0" layoutY="215.0" />
+      <TextField fx:id="type" layoutX="364.0" layoutY="257.0" />
+      <Button fx:id="ajouter" layoutX="339.0" layoutY="321.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="114.0" text="Ajouter" />
+      <Button fx:id="annuler" layoutX="543.0" layoutY="321.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="114.0" text="Annuler" />
    </children>
 </AnchorPane>

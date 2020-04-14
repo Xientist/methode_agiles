@@ -23,7 +23,7 @@ public class Transaction {
             private int personne ;
 
     public Transaction(int id,double montant, String dategorie, Date date_T, int personne) {
-       this.ID=id;
+        this.ID=id;
         this.montant = montant;
         this.categorie = dategorie;
         this.date_T = date_T;
@@ -67,6 +67,12 @@ public class Transaction {
     public void setPersonne(int personne) {
         this.personne = personne;
     }
+
+	@Override
+	public String toString() {
+		return "Transaction [ID=" + ID + ", montant=" + montant + ", categorie=" + categorie + ", date_T=" + date_T
+				+ ", personne=" + personne + "]";
+	}
             
 
  
