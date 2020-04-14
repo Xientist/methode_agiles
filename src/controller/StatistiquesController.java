@@ -1,6 +1,10 @@
 package controller;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,6 +19,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import model.Model;
 
 public class StatistiquesController {
 
@@ -46,6 +51,8 @@ public class StatistiquesController {
 
   @FXML
   private Label labelrevenu;
+  
+  private final int LAST_MONTH = 1, SIX_MONTHS = 2, LAST_YEAR = 3, TWO_YEARS = 4;
 	
   	public void initialize() {
   		
@@ -64,67 +71,115 @@ public class StatistiquesController {
   			labelrevenu.setVisible(true);
         String c=categorie.getSelectionModel().getSelectedItem().toString();
         System.out.println(c);
-        if(c=="Le mois dernier")
-        {
-        	XYChart.Series d= new  	XYChart.Series<>();
-        	// une boucle pour ajouter plusieurs valuers
-  			d.getData().add(new XYChart.Data<>("1",50));
-  			d.getData().add(new XYChart.Data<>("2",50));
+        
+        XYChart.Series d= new  	XYChart.Series<>();
+        XYChart.Series r= new  	XYChart.Series<>();
+        
+        depense.getData().clear();
+        revenu.getData().clear();
+        
+        TreeMap<String, String> m;
+        Set<String> keys;
+        
+        switch(c) {
+        
+        case "Le mois dernier":
+	        
+    		m = Model.getTransactionInstance().Stats_D(LAST_MONTH);
+    		keys = m.keySet();
+  			
+    		for(String key : keys) {
+    			
+    			d.getData().add(new XYChart.Data<>( key, Double.valueOf(m.get(key)) ));
+    		}
   			
   			depense.getData().addAll(d);
   			
-  			XYChart.Series r= new  	XYChart.Series<>();
-  			r.getData().add(new XYChart.Data<>("8",50));
-  			r.getData().add(new XYChart.Data<>("100",50));
+  			
+  			m = Model.getTransactionInstance().Stats_R(LAST_MONTH);
+    		keys = m.keySet();
+  			
+    		for(String key : keys) {
+    			
+    			r.getData().add(new XYChart.Data<>( key, Double.valueOf(m.get(key)) ));
+    		}
   			
   			revenu.getData().addAll(r);
+  			break;
+	        	
+	        
+        case "Les 6 derniers mois":
+	        
+        	m = Model.getTransactionInstance().Stats_D(SIX_MONTHS);
+    		keys = m.keySet();
+  			
+    		for(String key : keys) {
+    			
+    			d.getData().add(new XYChart.Data<>( key, Double.valueOf(m.get(key)) ));
+    		}
+  			
+  			depense.getData().addAll(d);
+  			
+  			
+  			m = Model.getTransactionInstance().Stats_R(SIX_MONTHS);
+    		keys = m.keySet();
+  			
+    		for(String key : keys) {
+    			
+    			r.getData().add(new XYChart.Data<>( key, Double.valueOf(m.get(key)) ));
+    		}
+  			
+  			revenu.getData().addAll(r);
+  			break;
+	        
+        case "L'année dernière":
         	
-        }
-        if(c=="Les 6 derniers mois")
-        {
-        	XYChart.Series d= new  	XYChart.Series<>();
-        	// une boucle pour ajouter plusieurs valuers
-  			d.getData().add(new XYChart.Data<>("1",50));
-  			d.getData().add(new XYChart.Data<>("2",50));
+        	m = Model.getTransactionInstance().Stats_D(LAST_YEAR);
+    		keys = m.keySet();
+  			
+    		for(String key : keys) {
+    			
+    			d.getData().add(new XYChart.Data<>( key, Double.valueOf(m.get(key)) ));
+    		}
   			
   			depense.getData().addAll(d);
   			
-  			XYChart.Series r= new  	XYChart.Series<>();
-  			r.getData().add(new XYChart.Data<>("1",50));
-  			r.getData().add(new XYChart.Data<>("2",50));
+  			
+  			m = Model.getTransactionInstance().Stats_R(LAST_YEAR);
+    		keys = m.keySet();
+  			
+    		for(String key : keys) {
+    			
+    			r.getData().add(new XYChart.Data<>( key, Double.valueOf(m.get(key)) ));
+    		}
   			
   			revenu.getData().addAll(r);
-        }
-        if(c=="L'année dernière")
-        {
-        	XYChart.Series d= new  	XYChart.Series<>();
-        	// une boucle pour ajouter plusieurs valuers
-  			d.getData().add(new XYChart.Data<>("1",50));
-  			d.getData().add(new XYChart.Data<>("2",50));
-  			
-  			depense.getData().addAll(d);
-  			
-  			XYChart.Series r= new  	XYChart.Series<>();
-  			r.getData().add(new XYChart.Data<>("1",50));
-  			r.getData().add(new XYChart.Data<>("2",50));
-  			
-  			revenu.getData().addAll(r);
-        }
-        if(c=="Les deux dernières années")
-        {
-        	XYChart.Series d= new  	XYChart.Series<>();
-        	// une boucle pour ajouter plusieurs valuers
-  			d.getData().add(new XYChart.Data<>("1",50));
-  			d.getData().add(new XYChart.Data<>("2",50));
-  			
-  			depense.getData().addAll(d);
-  			
-  			XYChart.Series r= new  	XYChart.Series<>();
-  			r.getData().add(new XYChart.Data<>("1",50));
-  			r.getData().add(new XYChart.Data<>("2",50));
-  			
-  			revenu.getData().addAll(r);
+  			break;
+        
+        case "Les deux dernières années":
         	
+        	m = Model.getTransactionInstance().Stats_D(TWO_YEARS);
+    		keys = m.keySet();
+  			
+    		for(String key : keys) {
+    			
+    			d.getData().add(new XYChart.Data<>( key, Double.valueOf(m.get(key)) ));
+    		}
+  			
+  			depense.getData().addAll(d);
+  			
+  			
+  			m = Model.getTransactionInstance().Stats_R(TWO_YEARS);
+    		keys = m.keySet();
+  			
+    		for(String key : keys) {
+    			
+    			r.getData().add(new XYChart.Data<>( key, Double.valueOf(m.get(key)) ));
+    		}
+  			
+  			revenu.getData().addAll(r);
+  			break;
+	        	
         }
      
     }
