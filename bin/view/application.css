@@ -146,13 +146,13 @@
     -fx-background-color: derive(-fx-focus-color,30%);
 }
 .chart {
-    -fx-padding: 20px;
+    -fx-padding: 15px;
     -fx-background-color: #1d1d1d;
-    -fx-legend-visible: true;
+    -fx-legend-visible: false;
 }
 
 .chart-content {
-    -fx-padding: 30px;    
+    -fx-padding: 20px;    
 }
 
 
