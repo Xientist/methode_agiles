@@ -21,7 +21,7 @@ public class TestDAO {
         //Personne dounya = new Personne("ennech");
     Transaction salaire = new Transaction(0,1000, "income",Date.valueOf("2015-03-31"), 1);        
       TransactionDAO bd = new TransactionDAO();
-       System.out.println(bd.SUM_D(2020));
+       System.out.println(bd.BudgetGlobal());
     // bd.importTransaction("Excel_Importation/transaction.xlsx");
     // bd.Stats_D(1);
     	// salaire.setMontant(954878987);'rgeg

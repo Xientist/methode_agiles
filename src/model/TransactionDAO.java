@@ -268,7 +268,7 @@ public class TransactionDAO {
 			try {
 
 				con = DriverManager.getConnection(URL, LOGIN, PASS);
-				ps = con.prepareStatement("Select sum(Montant) as 'budget' from transaction WHERE Categorie ='Revenu'");
+				ps = con.prepareStatement("Select (SELECT sum(Montant) as 'budget' from transaction WHERE Categorie ='Revenu')- (SELECT sum(Montant) as 'budget' from transaction WHERE Categorie ='Depense') as 'budget'");
 				rs = ps.executeQuery();
 				if (rs.next()) {
 					retour = rs.getDouble("budget");
