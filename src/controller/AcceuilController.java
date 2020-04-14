@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -47,30 +48,15 @@ public class AcceuilController implements Initializable{
 			 annee.getItems().add(year);
 		 }
 	 
+		double budgetValue = Model.getTransactionInstance().BudgetGlobal();
+		budget.setText(String.valueOf(budgetValue)+" €");
 		chargementDonnees();
 			
 		annee.setOnAction(new EventHandler<ActionEvent>() {
 			
 			@Override
 			public void handle(ActionEvent event) {
-				 int year = Integer.parseInt(annee.getSelectionModel().getSelectedItem().toString());
-				 double moyMensuelleDepense = Model.getTransactionInstance().AVG_Depense_M(year);
-				 
-				 double moyHebdoDepense = Model.getTransactionInstance().AVG_Revenu_H(year);
-				 
-				 double moyMensuelleGains = Model.getTransactionInstance().AVG_Revenu_M(year);
-				 //double moyAnnuelleGains = Model.getTransactionInstance();
-				 
-				 double moyHebdoGains = Model.getTransactionInstance().AVG_Revenu_H(year);
-				 
-				 moyenneMensuelleDepense.setText(String.valueOf(moyMensuelleDepense)+" €");
-				 moyenneHebdomadaireDepense.setText(String.valueOf(moyHebdoDepense)+ " €");
-				 moyenneMensuelleGains.setText(String.valueOf(moyMensuelleGains)+ " €");
-				 //moyenneAnnuelleGains.setText(String.valueOf(moyAnnuelleGains)+ " €");
-				 moyenneHebdomadaireGains.setText(String.valueOf(moyHebdoGains)+ " €");
-				 
-				
-				
+				chargementDonnees();	
 			}
 		});
 	   
@@ -78,26 +64,25 @@ public class AcceuilController implements Initializable{
 	    }
 	
 	private void chargementDonnees() {
-		double budgetValue = Model.getTransactionInstance().BudgetGlobal();
-		budget.setText(String.valueOf(budgetValue)+" €");
-	    
-	    //
-	    annee.getSelectionModel().selectFirst();
-	    int year = Integer.parseInt(annee.getSelectionModel().getSelectedItem().toString());
+	     annee.getSelectionModel().selectFirst();
+	     int year = Integer.parseInt(annee.getSelectionModel().getSelectedItem().toString());
 		 double moyMensuelleDepense = Model.getTransactionInstance().AVG_Depense_M(year);
-		 
+		  DecimalFormat df = new DecimalFormat("0.0");
+		 double moyAnnuelleDepense  = Model.getTransactionInstance().SUM_D(year);
 		 double moyHebdoDepense = Model.getTransactionInstance().AVG_Revenu_H(year);
 		 
 		 double moyMensuelleGains = Model.getTransactionInstance().AVG_Revenu_M(year);
-		 //double moyAnnuelleGains = Model.getTransactionInstance();
+		 double moyAnnuelleGains = Model.getTransactionInstance().SUM_R(year);
 		 
 		 double moyHebdoGains = Model.getTransactionInstance().AVG_Revenu_H(year);
 		 
-		 moyenneMensuelleDepense.setText(String.valueOf(moyMensuelleDepense)+" €");
+		 moyenneMensuelleDepense.setText(String.valueOf(df.format(moyMensuelleDepense))+" €");
 		 moyenneHebdomadaireDepense.setText(String.valueOf(moyHebdoDepense)+ " €");
 		 moyenneMensuelleGains.setText(String.valueOf(moyMensuelleGains)+ " €");
-		 //moyenneAnnuelleGains.setText(String.valueOf(moyAnnuelleGains)+ " €");
+		 moyenneAnnuelleGains.setText(String.valueOf(moyAnnuelleGains)+ " €");
+		 moyenneAnnuelleDepense.setText(String.valueOf(moyAnnuelleDepense)+ " €");
 		 moyenneHebdomadaireGains.setText(String.valueOf(moyHebdoGains)+ " €");
+		 
 		 
 		 Map<String, String> personnes = Model.getTransactionInstance().MAX_depense(year);
 	

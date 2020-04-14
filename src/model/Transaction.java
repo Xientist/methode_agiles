@@ -68,14 +68,4 @@ public class Transaction {
         this.personne = personne;
     }
 
-	@Override
-	public String toString() {
-		return "Transaction [ID=" + ID + ", montant=" + montant + ", categorie=" + categorie + ", date_T=" + date_T
-				+ ", personne=" + personne + "]";
-	}
-            
-
- 
-    
-  
 }

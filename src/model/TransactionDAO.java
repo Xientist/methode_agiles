@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 
+
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,6 @@ import java.time.LocalDate;
 
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.*;
-
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -268,7 +268,7 @@ public class TransactionDAO {
 			try {
 
 				con = DriverManager.getConnection(URL, LOGIN, PASS);
-				ps = con.prepareStatement("Select sum(Montant) as 'budget' from transaction WHERE Categorie ='Revenu'");
+				ps = con.prepareStatement("Select (SELECT sum(Montant) as 'budget' from transaction WHERE Categorie ='Revenu')- (SELECT sum(Montant) as 'budget' from transaction WHERE Categorie ='Depense') as 'budget'");
 				rs = ps.executeQuery();
 				if (rs.next()) {
 					retour = rs.getDouble("budget");
@@ -532,6 +532,100 @@ public class TransactionDAO {
 		}
 		return retour;
 	}
+	
+	// Somme  annuelle des revenus
+		public double SUM_R(int annee) {
+
+			Connection con = null;
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			double retour = 0;
+
+			try {
+
+				con = DriverManager.getConnection(URL, LOGIN, PASS);
+				ps = con.prepareStatement(
+						"SELECT SUM(Montant) as 'somme' FROM `transaction` WHERE Categorie ='Revenu' and year(Date_T)=?");
+				ps.setInt(1, annee);
+
+				rs = ps.executeQuery();
+
+				if (rs.next()) {
+					retour = rs.getDouble("somme");
+				}
+
+			} catch (Exception ee) {
+				ee.printStackTrace();
+			} finally {
+
+				try {
+					if (rs != null) {
+						rs.close();
+					}
+				} catch (Exception t) {
+				}
+				try {
+					if (ps != null) {
+						ps.close();
+					}
+				} catch (Exception t) {
+				}
+				try {
+					if (con != null) {
+						con.close();
+					}
+				} catch (Exception t) {
+				}
+			}
+			return retour;
+		}
+
+		// Somme  annuelle des depenses
+		public double SUM_D(int annee) {
+
+			Connection con = null;
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			double retour = 0;
+
+			try {
+
+				con = DriverManager.getConnection(URL, LOGIN, PASS);
+				ps = con.prepareStatement(
+						"SELECT SUM(Montant) as 'somme' FROM `transaction` WHERE Categorie ='Depense' and year(Date_T)=?");
+				ps.setInt(1, annee);
+
+				rs = ps.executeQuery();
+
+				if (rs.next()) {
+					retour = rs.getDouble("somme");
+				}
+
+			} catch (Exception ee) {
+				ee.printStackTrace();
+			} finally {
+
+				try {
+					if (rs != null) {
+						rs.close();
+					}
+				} catch (Exception t) {
+				}
+				try {
+					if (ps != null) {
+						ps.close();
+					}
+				} catch (Exception t) {
+				}
+				try {
+					if (con != null) {
+						con.close();
+					}
+				} catch (Exception t) {
+				}
+			}
+			return retour;
+		}
 
 //les 3 personne ayant plus depense
 	public Map<String, String> MAX_depense(int annee) {
@@ -757,13 +851,15 @@ public class TransactionDAO {
 					case 1:
 						String Categorie = nextCell.getStringCellValue();
 						statement.setString(2, Categorie);
+						break;
 					case 2:
-						// Date Date_T = Date.valueOf(nextCell.getLocalDateTimeCellValue().toString());
-						statement.setDate(3, Date.valueOf("2021-06-06"));
+						Date Date_T = Date.valueOf(nextCell.getLocalDateTimeCellValue().toLocalDate());
+						statement.setDate(3, Date_T);
 						break;
 					case 3:
 						int Personne = (int) nextCell.getNumericCellValue();
 						statement.setInt(4, Personne);
+						break;
 					}
 
 				}
