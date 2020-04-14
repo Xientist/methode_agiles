@@ -4,6 +4,7 @@ public class Model {
 
 	private static TransactionDAO transactionDAO;
 	private static PersonneDAO personneDAO;
+	private static UserDAO userDAO;
 	
 	public static TransactionDAO getTransactionInstance() {
 		
@@ -23,5 +24,15 @@ public class Model {
 		}
 		
 		return Model.personneDAO;
+	}
+	
+public static UserDAO getUserInstance() {
+		
+		if(Model.userDAO == null) {
+			
+			Model.userDAO = new UserDAO();
+		}
+		
+		return Model.userDAO;
 	}
 }

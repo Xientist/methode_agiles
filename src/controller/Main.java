@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import model.Model;
 import model.Personne;
 import model.Transaction;
 import model.TransactionDAO;
@@ -16,7 +17,8 @@ public class Main extends Application {
     {      
 		  // requette pour check si un compte existe
     	Boolean exist=true;
-    	
+    	int d = Model.getUserInstance().verifyUser("lol");
+    	System.out.println(d);
     	if(exist) {
     
     		Parent root = FXMLLoader.load(getClass().getResource("/view/connexion.fxml"));
@@ -61,7 +63,7 @@ public class Main extends Application {
 //    	for(Transaction t :bd.getListeTransaction()) {
 //    		System.out.println(t.getCategorie());
 //    	}
-    	
+    	System.out.println("exist");
        launch(args);
     }
 }
