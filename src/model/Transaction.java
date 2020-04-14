@@ -20,7 +20,8 @@ public class Transaction {
             private double montant ;
             private  String categorie ;
             private Date date_T;
-            private int personne ;
+            private int personne;
+            private String nomPersonne;
 
     public Transaction(int id,double montant, String dategorie, Date date_T, int personne) {
         this.ID=id;
@@ -28,6 +29,8 @@ public class Transaction {
         this.categorie = dategorie;
         this.date_T = date_T;
         this.personne = personne;
+        Personne p = Model.getPersonneInstance().getPersonById(this.personne);
+        nomPersonne = p.getNom();
     }
 
     public int getID() {
@@ -46,10 +49,13 @@ public class Transaction {
         return date_T;
     }
 
-    public int getPersonne() {
-        return personne;
+    public String getPersonne() {
+        return nomPersonne;
     }
 
+    public int getPersonneID() {
+        return personne;
+    }
 
 
     public void setMontant(double montant) {

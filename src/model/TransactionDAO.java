@@ -67,7 +67,7 @@ public class TransactionDAO {
 			ps.setDouble(1, transaction.getMontant());
 			ps.setString(2, transaction.getCategorie());
 			ps.setDate(3, transaction.getDate_T());
-			ps.setInt(4, transaction.getPersonne());
+			ps.setInt(4, transaction.getPersonneID());
 
 			// Exﾃｩcution de la requﾃｪte
 			retour = ps.executeUpdate();
@@ -249,7 +249,7 @@ public class TransactionDAO {
 			ps.setDouble(1, t.getMontant());
 			ps.setString(2, t.getCategorie());
 			ps.setDate(3, t.getDate_T());
-			ps.setInt(4, t.getPersonne());
+			ps.setInt(4, t.getPersonneID());
 			ps.setInt(5, t.getID());
 			// on exﾃｩcute la requﾃｪte
 			// rs contient un pointeur situﾃｩ jusute avant la premiﾃｨre ligne retournﾃｩe

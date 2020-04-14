@@ -130,7 +130,9 @@ public class TransactionsController implements Initializable{
 		transacts = FXCollections.observableArrayList();
 		
 		for(Transaction t : lists) {
-			  transacts.add(new Transaction(t.getID(), t.getMontant(), t.getCategorie(), t.getDate_T(), t.getPersonne()));
+			
+			
+			  transacts.add(new Transaction(t.getID(), t.getMontant(), t.getCategorie(), t.getDate_T(), t.getPersonneID()));
 		}
 		
 		return transacts;
