@@ -16,7 +16,7 @@
       <TableView fx:id="tvData" layoutX="143.0" layoutY="59.0" prefHeight="316.0" prefWidth="537.0">
         <columns>
             <TableColumn fx:id="id" prefWidth="155.0" text="Transactions" />
-          <TableColumn fx:id="montant" prefWidth="79.0" text="Montant" />
+          <TableColumn fx:id="montant" prefWidth="79.0" text="Montant(€)" />
           <TableColumn fx:id="categorie" prefWidth="97.0" text="Catégorie" />
             <TableColumn fx:id="personne" prefWidth="104.0" text="Personne" />
             <TableColumn fx:id="date" prefWidth="100.0" text="Date" />

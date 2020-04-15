@@ -37,6 +37,7 @@ public class AjoutTransactionController {
 		 	categorie_c		=	(categorie.getValue().toString().equals("Dépense"))? "Depense": "Revenu";
 		 	montant_c		=	montant.getText();
 		 	personne_c		=	personne.getText();
+		 	personne_c = (personne_c.replace(" ", "").equals(""))? "Inconnu": personne_c;
 		 	
 		 	Date date_T = Date.valueOf(date.getValue());
 		 	

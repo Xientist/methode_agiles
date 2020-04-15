@@ -49,7 +49,7 @@ public class AcceuilController implements Initializable{
 		 }
 	 
 		double budgetValue = Model.getTransactionInstance().BudgetGlobal();
-		budget.setText(String.valueOf(budgetValue)+" Ä");
+		budget.setText(String.format("%.2f", budgetValue)+" ‚Ç¨");
 		chargementDonnees();
 			
 		annee.setOnAction(new EventHandler<ActionEvent>() {
@@ -67,7 +67,6 @@ public class AcceuilController implements Initializable{
 	     annee.getSelectionModel().selectFirst();
 	     int year = Integer.parseInt(annee.getSelectionModel().getSelectedItem().toString());
 		 double moyMensuelleDepense = Model.getTransactionInstance().AVG_Depense_M(year);
-		  DecimalFormat df = new DecimalFormat("0.0");
 		 double moyAnnuelleDepense  = Model.getTransactionInstance().SUM_D(year);
 		 double moyHebdoDepense = Model.getTransactionInstance().AVG_Revenu_H(year);
 		 
@@ -76,12 +75,12 @@ public class AcceuilController implements Initializable{
 		 
 		 double moyHebdoGains = Model.getTransactionInstance().AVG_Revenu_H(year);
 		 
-		 moyenneMensuelleDepense.setText(String.valueOf(df.format(moyMensuelleDepense))+" Ä");
-		 moyenneHebdomadaireDepense.setText(String.valueOf(moyHebdoDepense)+ " Ä");
-		 moyenneMensuelleGains.setText(String.valueOf(moyMensuelleGains)+ " Ä");
-		 moyenneAnnuelleGains.setText(String.valueOf(moyAnnuelleGains)+ " Ä");
-		 moyenneAnnuelleDepense.setText(String.valueOf(moyAnnuelleDepense)+ " Ä");
-		 moyenneHebdomadaireGains.setText(String.valueOf(moyHebdoGains)+ " Ä");
+		 moyenneMensuelleDepense.setText(String.format("%.2f", moyMensuelleDepense)+" ‚Ç¨");
+		 moyenneHebdomadaireDepense.setText(String.format("%.2f", moyHebdoDepense)+ " ‚Ç¨");
+		 moyenneMensuelleGains.setText(String.format("%.2f", moyMensuelleGains)+ " ‚Ç¨");
+		 moyenneAnnuelleGains.setText(String.format("%.2f", moyAnnuelleGains)+ " ‚Ç¨");
+		 moyenneAnnuelleDepense.setText(String.format("%.2f", moyAnnuelleDepense)+ " ‚Ç¨");
+		 moyenneHebdomadaireGains.setText(String.format("%.2f", moyHebdoGains)+ " ‚Ç¨");
 		 
 		 
 		 Map<String, String> personnes = Model.getTransactionInstance().MAX_depense(year);
@@ -89,7 +88,7 @@ public class AcceuilController implements Initializable{
 		 String eachpersonne[] = new String[5];
 		 int i=0;
 		 for(Map.Entry<String,String> p: personnes.entrySet()) {
-			 eachpersonne[i] = " " +p.getKey() + " ‡ depensÈ(e) "+ p.getValue()+" Ä";
+			 eachpersonne[i] = " " +p.getKey() + " a d√©pens√©(e) "+ p.getValue()+" ‚Ç¨";
 			++i;
 		
 		 }
