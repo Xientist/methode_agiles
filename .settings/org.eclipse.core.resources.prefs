@@ -2,3 +2,5 @@ eclipse.preferences.version=1
 encoding//src/controller/AjoutTransactionController.java=UTF-8
 encoding//src/controller/StatistiquesController.java=UTF-8
 encoding//src/model/TransactionDAO.java=UTF-8
+encoding//src/view/acceuil.fxml=UTF-8
+encoding/<project>=UTF-8

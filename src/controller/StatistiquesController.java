@@ -70,7 +70,7 @@ public class StatistiquesController {
 			labeldepenses.setVisible(true);
   			labelrevenu.setVisible(true);
         String c=categorie.getSelectionModel().getSelectedItem().toString();
-        System.out.println(c);
+        //System.out.println(c);
         
         XYChart.Series d= new  	XYChart.Series<>();
         XYChart.Series r= new  	XYChart.Series<>();
