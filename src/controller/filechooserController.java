@@ -27,7 +27,9 @@ public class filechooserController implements Initializable {
 		fc.getExtensionFilters().addAll(new ExtensionFilter("Excel files","*.xlsx"));   
 		
 		File selectedfile =fc.showOpenDialog(null);
-		String fichier=selectedfile.getName();
+		
+		String fichier=selectedfile.getAbsolutePath();
+
 		filesname.setText(fichier);
 		System.out.println(fichier);
 		
