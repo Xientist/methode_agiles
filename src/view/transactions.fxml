@@ -15,8 +15,8 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#122540" height="393.0" layoutX="143.0" layoutY="3.0" stroke="WHITE" strokeType="INSIDE" width="554.0" />
       <TableView fx:id="tvData" layoutX="151.0" layoutY="59.0" prefHeight="316.0" prefWidth="537.0">
         <columns>
-            <TableColumn fx:id="id" prefWidth="155.0" text="Transactions" />
-          <TableColumn fx:id="montant" prefWidth="79.0" text="Montant(€)" />
+            <TableColumn fx:id="id" prefWidth="60.0" text="Id" />
+          <TableColumn fx:id="montant" prefWidth="174.0" text="Montant(€)" />
           <TableColumn fx:id="categorie" prefWidth="97.0" text="Catégorie" />
             <TableColumn fx:id="personne" prefWidth="104.0" text="Personne" />
             <TableColumn fx:id="date" prefWidth="100.0" text="Date" />

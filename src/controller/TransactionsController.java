@@ -60,8 +60,8 @@ public class TransactionsController implements Initializable{
 	        	public void handle(MouseEvent event) {
 	        		
 	        		ModifierSupprimerTransactionController.IDtransaction=tvData.getSelectionModel().getSelectedItem().getID();
-	        		ModifierSupprimerTransactionController.montantOLD=Double.toString(tvData.getSelectionModel().getSelectedItem().getMontant());
-	        		ModifierSupprimerTransactionController.personneOLD=tvData.getSelectionModel().getSelectedItem().getPersonne();
+	        		ModifierSupprimerTransactionController.montantOLD=tvData.getSelectionModel().getSelectedItem().getMontant();
+	        		ModifierSupprimerTransactionController.personneOLD=tvData.getSelectionModel().getSelectedItem().getPersonneID();
 	        		ModifierSupprimerTransactionController.categorieOLD=tvData.getSelectionModel().getSelectedItem().getCategorie();
 	        		ModifierSupprimerTransactionController.dateOLD=tvData.getSelectionModel().getSelectedItem().getDate_T();
 	        		Parent parent = null;

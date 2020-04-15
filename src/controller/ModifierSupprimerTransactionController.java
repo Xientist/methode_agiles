@@ -15,16 +15,17 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.util.converter.LocalDateStringConverter;
 import model.Model;
 import model.Personne;
 import model.Transaction;
 
 public class ModifierSupprimerTransactionController {
-	public static int IDtransaction=1;
-	public static String montantOLD="254";
-	public static String categorieOLD="depense";
-	public static String personneOLD="jj";
-	public static Date dateOLD;
+	public static int IDtransaction = -1;
+	public static double montantOLD = 0.0;
+	public static String categorieOLD = "Depense";
+	public static int personneOLD = -1;
+	public static Date dateOLD = Date.valueOf(LocalDate.now());
 	@FXML
     private Button modifier;
      @FXML
@@ -39,36 +40,63 @@ public class ModifierSupprimerTransactionController {
 	 public void initialize() {
 
 		 	categorie.getItems().addAll("Dépense","Revenu");
-		 	System.out.println(montantOLD);
-	        String m=montantOLD;
+		 	
+	        String m=String.valueOf(montantOLD);
 			montant.setText(m);
-			String p=personneOLD;
+			String p= Model.getPersonneInstance().getPersonById(personneOLD).getNom();
 		 	personne.setText(p);
 		 	String c=categorieOLD;
-		 	categorie.setValue(c);
-		 	
-		 
-		 System.out.println(dateOLD);
-		 String d[]=dateOLD.toString().split("-");
-		   LocalDate localDate = LocalDate.of(Integer.parseInt(d[0]),Integer.parseInt(d[1]),Integer.parseInt(d[2]));
-		
-		 	date.setValue(localDate);
-		 	
-    
-		 	
+		 	categorie.setValue((c.equals("Depense")?"Dépense":"Revenu"));
+		 	date.setValue(dateOLD.toLocalDate());
 	    }
 
-	 public void modifierTreansaction(ActionEvent event) {
+	 public void modifierTreansaction(ActionEvent event) throws IOException {
 
+		 	Transaction t = new Transaction(IDtransaction, montantOLD, categorieOLD, dateOLD, personneOLD);
+		 	t.setCategorie((categorie.getValue().toString().equals("Dépense"))?"Depense":"Revenu");
+		 	t.setDate_T(Date.valueOf(date.getValue()));
+		 	t.setMontant(Double.parseDouble(montant.getText()));
+		 	
+		 	String s = personne.getText();
+		 	s = (s.replace(" ", "").equals(""))? "Inconnu": "s";
+		 	Personne personne_p = Model.getPersonneInstance().getPersonByName(s);
+		 	
+		 	if(personne_p == null) {
+		 		
+		 		personne_p = new Personne(-1, personne.getText());
+		 		
+		 		Model.getPersonneInstance().insertPersone(personne_p);
+		 		
+		 		personne_p.setId(Model.getPersonneInstance().getPersonByName(personne.getText()).getId());
+		 	}
+		 	
+		 	t.setPersonne(personne_p.getId());
+		 	
+		 	Model.getTransactionInstance().update(t);
+		 	
+		 	Parent parent= FXMLLoader.load(getClass().getResource("/view/transactions.fxml"));
+	    	Scene scene=new Scene(parent);
+	    	scene.getStylesheets().add(getClass().getResource("/view/application.css").toExternalForm());
+	    	Stage window = (Stage) modifier.getScene().getWindow();
+	    	window.setScene(scene);
+	    	window.show();
 	    }
 
-	  public  void supprimerTreansaction(ActionEvent event) {
+	  public  void supprimerTreansaction(ActionEvent event) throws IOException {
 
+		  	Model.getTransactionInstance().Delete(IDtransaction);
+		  	
+		  	Parent parent= FXMLLoader.load(getClass().getResource("/view/transactions.fxml"));
+	    	Scene scene=new Scene(parent);
+	    	scene.getStylesheets().add(getClass().getResource("/view/application.css").toExternalForm());
+	    	Stage window = (Stage) supprimer.getScene().getWindow();
+	    	window.setScene(scene);
+	    	window.show();
 	    }
 
 	
 	   public void Annuler(ActionEvent event) throws IOException {
-	    	Parent parent= FXMLLoader.load(getClass().getResource("/view/acceuil.fxml"));
+	    	Parent parent= FXMLLoader.load(getClass().getResource("/view/transactions.fxml"));
 	    	Scene scene=new Scene(parent);
 	    	scene.getStylesheets().add(getClass().getResource("/view/application.css").toExternalForm());
 	    	Stage window = (Stage) annuler.getScene().getWindow();
