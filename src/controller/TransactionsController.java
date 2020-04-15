@@ -17,6 +17,7 @@ import org.apache.poi.hwpf.model.PropertyModifier;
 import org.apache.poi.ss.format.CellNumberFormatter;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -34,6 +35,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 
 
 public class TransactionsController implements Initializable{
@@ -53,7 +55,31 @@ public class TransactionsController implements Initializable{
 	
 	@Override
 	 public void initialize(URL location, ResourceBundle resources) {
-
+	        tvData.setOnMouseClicked(new EventHandler<MouseEvent>() {
+	        	@Override
+	        	public void handle(MouseEvent event) {
+	        		
+	        		ModifierSupprimerTransactionController.IDtransaction=tvData.getSelectionModel().getSelectedItem().getID();
+	        		ModifierSupprimerTransactionController.montantOLD=Double.toString(tvData.getSelectionModel().getSelectedItem().getMontant());
+	        		ModifierSupprimerTransactionController.personneOLD=tvData.getSelectionModel().getSelectedItem().getPersonne();
+	        		ModifierSupprimerTransactionController.categorieOLD=tvData.getSelectionModel().getSelectedItem().getCategorie();
+	        		ModifierSupprimerTransactionController.dateOLD=tvData.getSelectionModel().getSelectedItem().getDate_T();
+	        		Parent parent = null;
+					try {
+						parent = FXMLLoader.load(getClass().getResource("/view/modifiersupprimer.fxml"));
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+	    	    	Scene scene=new Scene(parent);
+	    	    	scene.getStylesheets().add(getClass().getResource("/view/application.css").toExternalForm());
+	    	    	Stage window = (Stage) acceuil.getScene().getWindow();
+	    	    	window.setScene(scene);
+	    	    	window.show();
+	        	}
+	        	
+	        	
+	        });
 		
 		 id.setCellValueFactory(new PropertyValueFactory<>("ID"));
 		 montant.setCellValueFactory(new PropertyValueFactory<>("montant"));

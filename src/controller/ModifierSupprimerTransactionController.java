@@ -3,6 +3,7 @@ package controller;
 import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.time.ZoneId;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,8 +19,17 @@ import model.Model;
 import model.Personne;
 import model.Transaction;
 
-public class AjoutTransactionController {
-	
+public class ModifierSupprimerTransactionController {
+	public static int IDtransaction=1;
+	public static String montantOLD="254";
+	public static String categorieOLD="depense";
+	public static String personneOLD="jj";
+	public static Date dateOLD;
+	@FXML
+    private Button modifier;
+     @FXML
+    private Button supprimer;
+     
 	 @FXML private TextField transaction,montant,personne;
 	 @FXML private DatePicker date;
 	 @FXML private ComboBox categorie;
@@ -29,8 +39,33 @@ public class AjoutTransactionController {
 	 public void initialize() {
 
 		 	categorie.getItems().addAll("Dépense","Revenu");
+		 	System.out.println(montantOLD);
+	        String m=montantOLD;
+			montant.setText(m);
+			String p=personneOLD;
+		 	personne.setText(p);
+		 	String c=categorieOLD;
+		 	categorie.setValue(c);
+		 	
+		 
+		 System.out.println(dateOLD);
+		 String d[]=dateOLD.toString().split("-");
+		   LocalDate localDate = LocalDate.of(Integer.parseInt(d[0]),Integer.parseInt(d[1]),Integer.parseInt(d[2]));
+		
+		 	date.setValue(localDate);
+		 	
+    
+		 	
 	    }
-	 
+
+	 public void modifierTreansaction(ActionEvent event) {
+
+	    }
+
+	  public  void supprimerTreansaction(ActionEvent event) {
+
+	    }
+
 	 public void ajouterTreansaction(ActionEvent event) throws IOException {
 		 
 		 	transaction_c	=	transaction.getText();
@@ -90,4 +125,5 @@ public class AjoutTransactionController {
 	    	window.show();
 
 	    }
+
 }

@@ -13,7 +13,7 @@
       <Button fx:id="statistiques" layoutY="112.0" mnemonicParsing="false" onAction="#goToStatistiques" prefHeight="25.0" prefWidth="143.0" text="Statistiques" />
       <Button fx:id="predictions" layoutY="145.0" mnemonicParsing="false" onAction="#goToPrediction" prefHeight="25.0" prefWidth="143.0" text="Prédictions" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#122540" height="393.0" layoutX="143.0" layoutY="3.0" stroke="WHITE" strokeType="INSIDE" width="554.0" />
-      <TableView fx:id="tvData" layoutX="143.0" layoutY="59.0" prefHeight="316.0" prefWidth="537.0">
+      <TableView fx:id="tvData" layoutX="151.0" layoutY="59.0" prefHeight="316.0" prefWidth="537.0">
         <columns>
             <TableColumn fx:id="id" prefWidth="155.0" text="Transactions" />
           <TableColumn fx:id="montant" prefWidth="79.0" text="Montant(€)" />
@@ -22,8 +22,7 @@
             <TableColumn fx:id="date" prefWidth="100.0" text="Date" />
         </columns>
       </TableView>
-      <Button layoutX="541.0" layoutY="14.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="118.0" text="Supprimer" />
-      <Button layoutX="393.0" layoutY="14.0" mnemonicParsing="false" onAction="#ajouterviaCSV" prefHeight="32.0" prefWidth="118.0" text="Importer" />
-      <Button layoutX="269.0" layoutY="14.0" mnemonicParsing="false" onAction="#goToAjoutTransaction" prefHeight="32.0" prefWidth="96.0" text="Ajouter" />
+      <Button layoutX="380.0" layoutY="14.0" mnemonicParsing="false" onAction="#ajouterviaCSV" prefHeight="32.0" prefWidth="118.0" text="Importer" />
+      <Button layoutX="259.0" layoutY="14.0" mnemonicParsing="false" onAction="#goToAjoutTransaction" prefHeight="32.0" prefWidth="96.0" text="Ajouter" />
    </children>
 </AnchorPane>
