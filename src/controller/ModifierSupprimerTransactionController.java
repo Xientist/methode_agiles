@@ -34,7 +34,7 @@ public class ModifierSupprimerTransactionController {
 	 @FXML private DatePicker date;
 	 @FXML private ComboBox categorie;
 	 String transaction_c,categorie_c,montant_c,personne_c;
-	 @FXML private Button ajouter,annuler;
+	 @FXML private Button annuler;
 	 
 	 public void initialize() {
 
@@ -66,61 +66,12 @@ public class ModifierSupprimerTransactionController {
 
 	    }
 
-	 public void ajouterTreansaction(ActionEvent event) throws IOException {
-		 
-		 	transaction_c	=	transaction.getText();
-		 	categorie_c		=	(categorie.getValue().toString().equals("Dépense"))? "Depense": "Revenu";
-		 	montant_c		=	montant.getText();
-		 	personne_c		=	personne.getText();
-		 	personne_c = (personne_c.replace(" ", "").equals(""))? "Inconnu": personne_c;
-		 	
-		 	Date date_T = Date.valueOf(date.getValue());
-		 	
-		 	Personne personne_p = Model.getPersonneInstance().getPersonByName(personne_c);
-		 	
-		 	if(personne_p == null) {
-		 		
-		 		personne_p = new Personne(-1, personne_c);
-		 		
-		 		Model.getPersonneInstance().insertPersone(personne_p);
-		 		
-		 		personne_p.setId(Model.getPersonneInstance().getPersonByName(personne_c).getId());
-		 	}
-		 	
-		 	double montant_d;
-		 	
-		 	try {
-		 		
-		 		montant_d = Double.parseDouble(montant_c);
-		 	
-		 	} catch(NumberFormatException nfe) {
-		 		
-		 		montant_d = 0.0;
-		 	}
-		 	
-		 	System.out.println(transaction_c);
-		 	System.out.println( categorie_c);
-		 	System.out.println( montant_d);
-		 	System.out.println (personne_p.getId());
-		 	System.out.println(date_T);
-		 	
-		 	Transaction t = new Transaction(-1, montant_d, categorie_c, date_T, personne_p.getId());
-		 	
-		 	Model.getTransactionInstance().insert(t);
-
-			Parent parent= FXMLLoader.load(getClass().getResource("/view/acceuil.fxml"));
-	    	Scene scene=new Scene(parent);
-	    	scene.getStylesheets().add(getClass().getResource("/view/application.css").toExternalForm());
-	    	Stage window = (Stage) ajouter.getScene().getWindow();
-	    	window.setScene(scene);
-	    	window.show();
-	    	
-		}
+	
 	   public void Annuler(ActionEvent event) throws IOException {
 	    	Parent parent= FXMLLoader.load(getClass().getResource("/view/acceuil.fxml"));
 	    	Scene scene=new Scene(parent);
 	    	scene.getStylesheets().add(getClass().getResource("/view/application.css").toExternalForm());
-	    	Stage window = (Stage) ajouter.getScene().getWindow();
+	    	Stage window = (Stage) annuler.getScene().getWindow();
 	    	window.setScene(scene);
 	    	window.show();
 
