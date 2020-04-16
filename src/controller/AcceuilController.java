@@ -50,22 +50,53 @@ public class AcceuilController implements Initializable{
 	 
 		double budgetValue = Model.getTransactionInstance().BudgetGlobal();
 		budget.setText(String.format("%.2f", budgetValue)+" €");
-		chargementDonnees();
-			
-		annee.setOnAction(new EventHandler<ActionEvent>() {
-			
-			@Override
-			public void handle(ActionEvent event) {
-				chargementDonnees();	
-			}
-		});
+		chargementDonneesinit();
+		
 	   
    
 	    }
-	
-	private void chargementDonnees() {
-	     annee.getSelectionModel().selectFirst();
+	private void chargementDonneesinit() {
+		 annee.getSelectionModel().selectFirst();
 	     int year = Integer.parseInt(annee.getSelectionModel().getSelectedItem().toString());
+	     System.out.println(year);
+		 double moyMensuelleDepense = Model.getTransactionInstance().AVG_Depense_M(year);
+		 double moyAnnuelleDepense  = Model.getTransactionInstance().SUM_D(year);
+		 double moyHebdoDepense = Model.getTransactionInstance().AVG_Revenu_H(year);
+		 
+		 double moyMensuelleGains = Model.getTransactionInstance().AVG_Revenu_M(year);
+		 double moyAnnuelleGains = Model.getTransactionInstance().SUM_R(year);
+		 
+		 double moyHebdoGains = Model.getTransactionInstance().AVG_Revenu_H(year);
+		 
+		 moyenneMensuelleDepense.setText(String.format("%.2f", moyMensuelleDepense)+" €");
+		 moyenneHebdomadaireDepense.setText(String.format("%.2f", moyHebdoDepense)+ " €");
+		 moyenneMensuelleGains.setText(String.format("%.2f", moyMensuelleGains)+ " €");
+		 moyenneAnnuelleGains.setText(String.format("%.2f", moyAnnuelleGains)+ " €");
+		 moyenneAnnuelleDepense.setText(String.format("%.2f", moyAnnuelleDepense)+ " €");
+		 moyenneHebdomadaireGains.setText(String.format("%.2f", moyHebdoGains)+ " €");
+		 
+		 
+		 Map<String, String> personnes = Model.getTransactionInstance().MAX_depense(year);
+	
+		 String eachpersonne[] = new String[5];
+		 int i=0;
+		 for(Map.Entry<String,String> p: personnes.entrySet()) {
+			 eachpersonne[i] = " " +p.getKey() + " a dépensé(e) "+ p.getValue()+" €";
+			++i;
+		
+		 }
+			
+		 	
+			personne1.setText(eachpersonne[0]);
+			personne2.setText(eachpersonne[1]);
+			personne3.setText(eachpersonne[2]);
+		 
+	}
+	private void chargementDonnees() {
+		
+	    // annee.getSelectionModel().selectFirst();
+	     int year = Integer.parseInt(annee.getSelectionModel().getSelectedItem().toString());
+	     System.out.println(year);
 		 double moyMensuelleDepense = Model.getTransactionInstance().AVG_Depense_M(year);
 		 double moyAnnuelleDepense  = Model.getTransactionInstance().SUM_D(year);
 		 double moyHebdoDepense = Model.getTransactionInstance().AVG_Revenu_H(year);
@@ -100,7 +131,10 @@ public class AcceuilController implements Initializable{
 		 
 			
 	}
-	 
+	public void getyear(ActionEvent event)throws IOException {
+		chargementDonnees();	
+	}
+	
 	 public void goToAcceuil(ActionEvent event) throws IOException {
 			
 			Parent parent= FXMLLoader.load(getClass().getResource("/view/acceuil.fxml"));
