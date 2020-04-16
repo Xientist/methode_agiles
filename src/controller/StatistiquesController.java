@@ -59,16 +59,17 @@ public class StatistiquesController {
   			categorie.getItems().addAll("Le mois dernier","Les 6 derniers mois" ,"L'année dernière", "Les deux dernières années");
   		
   			depense.setVisible(false);
-  			revenu.setVisible(false);
+  		    revenu.setVisible(false);
   			labeldepenses.setVisible(false);
   			labelrevenu.setVisible(false);
 	    }
     
-    public void getCategorie(ActionEvent event) {
+    public void getCategorie(ActionEvent event) throws InterruptedException {
     		depense.setVisible(true);
 			revenu.setVisible(true);
 			labeldepenses.setVisible(true);
   			labelrevenu.setVisible(true);
+  			Thread.sleep(500);
         String c=categorie.getSelectionModel().getSelectedItem().toString();
         //System.out.println(c);
         
