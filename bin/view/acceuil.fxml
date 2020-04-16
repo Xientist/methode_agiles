@@ -16,8 +16,8 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#122540" height="393.0" layoutX="143.0" layoutY="3.0" stroke="WHITE" strokeType="INSIDE" width="554.0" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="143.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="3.0" />
       <Label layoutX="438.0" layoutY="29.0" prefHeight="17.0" prefWidth="101.0" text="Budget actuel: " textFill="WHITE" />
       <Label fx:id="budget" layoutX="560.0" layoutY="29.0" prefHeight="17.0" prefWidth="124.0" text="\$$$$" textFill="WHITE" />
-      <Label layoutX="161.0" layoutY="60.0" prefHeight="17.0" prefWidth="167.0" text="Moyenne des depenses " />
-      <Label layoutX="178.0" layoutY="100.0" prefHeight="17.0" prefWidth="167.0" text="Moyenne annuelle: " />
+      <Label layoutX="161.0" layoutY="60.0" prefHeight="17.0" prefWidth="167.0" text="Moyenne des dépenses " />
+      <Label layoutX="178.0" layoutY="100.0" prefHeight="17.0" prefWidth="167.0" text="Total annuel: " />
       <Label fx:id="moyenneAnnuelleDepense" layoutX="350.0" layoutY="100.0" prefHeight="17.0" prefWidth="143.0" text="\$$$$" textFill="WHITE" />
       <Label layoutX="178.0" layoutY="127.0" prefHeight="17.0" prefWidth="143.0" text="Moyenne mensuelle: " />
       <Label fx:id="moyenneMensuelleDepense" layoutX="350.0" layoutY="127.0" prefHeight="17.0" prefWidth="143.0" text="\$$$$" textFill="WHITE" />
@@ -28,7 +28,7 @@
       <Line endX="382.0" endY="-18.0" layoutX="315.0" layoutY="88.0" startX="13.0" startY="-18.0" stroke="WHITE" />
       <Label layoutX="154.0" layoutY="170.0" prefHeight="17.0" prefWidth="143.0" text="  Moyenne des gains" />
       <Line endX="381.0" endY="-18.0" layoutX="316.0" layoutY="198.0" startX="-9.0" startY="-18.0" stroke="WHITE" />
-      <Label layoutX="180.0" layoutY="193.0" prefHeight="17.0" prefWidth="143.0" text="Moyenne annuelle:" />
+      <Label layoutX="180.0" layoutY="193.0" prefHeight="17.0" prefWidth="143.0" text="Total annuel:" />
       <Label fx:id="moyenneAnnuelleGains" layoutX="360.0" layoutY="190.0" prefHeight="17.0" prefWidth="143.0" text="\$$$$" textFill="WHITE" />
       
       <Label layoutX="179.0" layoutY="215.0" prefHeight="17.0" prefWidth="143.0" text="Moyenne mensuelle:" />

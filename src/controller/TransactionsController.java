@@ -59,6 +59,8 @@ public class TransactionsController implements Initializable{
 	        	@Override
 	        	public void handle(MouseEvent event) {
 	        		
+	        		if(tvData.getSelectionModel().getSelectedItem() == null) return;
+	        		
 	        		ModifierSupprimerTransactionController.IDtransaction=tvData.getSelectionModel().getSelectedItem().getID();
 	        		ModifierSupprimerTransactionController.montantOLD=tvData.getSelectionModel().getSelectedItem().getMontant();
 	        		ModifierSupprimerTransactionController.personneOLD=tvData.getSelectionModel().getSelectedItem().getPersonneID();
