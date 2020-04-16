@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
+import model.Model;
 import javafx.scene.Parent;
 
 public class Controller {
@@ -23,12 +24,16 @@ public class Controller {
     }
     
 	public void authentifier(ActionEvent event) throws IOException {
+		
+		Boolean exist= Model.getUserInstance().verifyPass(mdp.getText());
+		if(exist) {
 		Parent parent= FXMLLoader.load(getClass().getResource("/view/acceuil.fxml"));
     	Scene scene=new Scene(parent);
     	scene.getStylesheets().add(getClass().getResource("/view/application.css").toExternalForm());
     	Stage window = (Stage) authentification.getScene().getWindow();
     	window.setScene(scene);
     	window.show();
+		}
     	
 	}
 	public void quitterApp(ActionEvent event) {

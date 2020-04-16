@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
+import model.Model;
 
 public class CreationController {
 
@@ -20,7 +21,9 @@ public class CreationController {
        
     }
     public void creer(ActionEvent event) throws IOException {
-    	
+    	String mdpc=mdp.getText();
+    	if(!mdpc.equals("")) {
+    		 Model.getUserInstance().addUser(mdpc);
     	/// recuperer le mdp et l'enregister dans la base puis on passe a l'acceuil
 		Parent parent= FXMLLoader.load(getClass().getResource("/view/acceuil.fxml"));
     	Scene scene=new Scene(parent);
@@ -28,6 +31,7 @@ public class CreationController {
     	Stage window = (Stage) mdp.getScene().getWindow();
     	window.setScene(scene);
     	window.show();
+    	}
     }
 	public void quitterApp(ActionEvent event) {
 		
