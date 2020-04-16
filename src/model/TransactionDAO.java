@@ -640,11 +640,11 @@ public class TransactionDAO {
 
 			con = DriverManager.getConnection(URL, LOGIN, PASS);
 			ps = con.prepareStatement(
-					"SELECT personne.Nom ,Montant FROM transaction INNER JOIN personne on personne.ID=transaction.personne WHERE Categorie='Depense' and year(Date_T)=? ORDER by Montant DESC LIMIT 3");
+					"SELECT personne.Nom ,SUM(Montant) as m FROM transaction INNER JOIN personne on personne.ID=transaction.personne WHERE Categorie='Depense' and year(Date_T)=? ORDER by m DESC LIMIT 3");
 			ps.setInt(1, annee);
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				retour.put(rs.getString("Nom"), String.valueOf(rs.getDouble("Montant")));
+				retour.put(rs.getString("Nom"), String.valueOf(rs.getDouble("m")));
 			}
 
 		} catch (Exception ee) {

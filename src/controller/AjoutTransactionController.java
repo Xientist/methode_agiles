@@ -20,7 +20,7 @@ import model.Transaction;
 
 public class AjoutTransactionController {
 	
-	 @FXML private TextField transaction,montant,personne;
+	 @FXML private TextField montant,personne;
 	 @FXML private DatePicker date;
 	 @FXML private ComboBox categorie;
 	 String transaction_c,categorie_c,montant_c,personne_c;
@@ -33,11 +33,22 @@ public class AjoutTransactionController {
 	 
 	 public void ajouterTreansaction(ActionEvent event) throws IOException {
 		 
-		 	transaction_c	=	transaction.getText();
 		 	categorie_c		=	(categorie.getValue().toString().equals("Dépense"))? "Depense": "Revenu";
 		 	montant_c		=	montant.getText();
 		 	personne_c		=	personne.getText();
 		 	personne_c 		=  (personne_c.replace(" ", "").equals(""))? "Inconnu": personne_c;
+		 	
+		 	double montant_d;
+		 	
+		 	try {
+		 		
+		 		montant_d = Double.parseDouble(montant_c);
+		 	
+		 	} catch(NumberFormatException nfe) {
+		 		
+		 		montant_d = 0.0;
+		 		return;
+		 	}
 		 	
 		 	Date date_T = Date.valueOf(date.getValue());
 		 	
@@ -50,17 +61,6 @@ public class AjoutTransactionController {
 		 		Model.getPersonneInstance().insertPersone(personne_p);
 		 		
 		 		personne_p.setId(Model.getPersonneInstance().getPersonByName(personne_c).getId());
-		 	}
-		 	
-		 	double montant_d;
-		 	
-		 	try {
-		 		
-		 		montant_d = Double.parseDouble(montant_c);
-		 	
-		 	} catch(NumberFormatException nfe) {
-		 		
-		 		montant_d = 0.0;
 		 	}
 		 	
 		 	System.out.println(transaction_c);

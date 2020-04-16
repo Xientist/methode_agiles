@@ -53,9 +53,19 @@ public class ModifierSupprimerTransactionController {
 	 public void modifierTreansaction(ActionEvent event) throws IOException {
 
 		 	Transaction t = new Transaction(IDtransaction, montantOLD, categorieOLD, dateOLD, personneOLD);
-		 	t.setCategorie((categorie.getValue().toString().equals("Dépense"))?"Depense":"Revenu");
-		 	t.setDate_T(Date.valueOf(date.getValue()));
-		 	t.setMontant(Double.parseDouble(montant.getText()));
+		 
+		 	montant_c = montant.getText();
+		 	double montant_d;
+		 	
+		 	try {
+		 		
+		 		montant_d = Double.parseDouble(montant_c);
+		 	
+		 	} catch(NumberFormatException nfe) {
+		 		
+		 		montant_d = 0.0;
+		 		return;
+		 	}
 		 	
 		 	String s = personne.getText();
 		 	s = (s.replace(" ", "").equals(""))? "Inconnu": "s";
@@ -70,6 +80,9 @@ public class ModifierSupprimerTransactionController {
 		 		personne_p.setId(Model.getPersonneInstance().getPersonByName(personne.getText()).getId());
 		 	}
 		 	
+		 	t.setMontant(montant_d);
+		 	t.setCategorie((categorie.getValue().toString().equals("Dépense"))?"Depense":"Revenu");
+		 	t.setDate_T(Date.valueOf(date.getValue()));
 		 	t.setPersonne(personne_p.getId());
 		 	
 		 	Model.getTransactionInstance().update(t);
