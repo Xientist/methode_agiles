@@ -29,4 +29,10 @@ public class CreationController {
     	window.setScene(scene);
     	window.show();
     }
+	public void quitterApp(ActionEvent event) {
+		
+		 Stage stage = (Stage) mdp.getScene().getWindow();
+		    // do what you have to do
+		    stage.close();
+	}
 }

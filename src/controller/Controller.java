@@ -31,5 +31,11 @@ public class Controller {
     	window.show();
     	
 	}
+	public void quitterApp(ActionEvent event) {
+		
+		 Stage stage = (Stage) authentification.getScene().getWindow();
+		    // do what you have to do
+		    stage.close();
+	}
 	
 }
