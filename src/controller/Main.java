@@ -1,22 +1,57 @@
 package controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+import java.sql.SQLException;
+import java.sql.SQLSyntaxErrorException;
+import java.util.ResourceBundle;
+
+import com.mysql.cj.jdbc.exceptions.SQLError;
+
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.stage.FileChooser.ExtensionFilter;
 import model.Model;
 import model.Personne;
 import model.Transaction;
 import model.TransactionDAO;
 
-public class Main extends Application {
+public class Main extends Application implements Initializable {
 
+	@FXML TextField erreur;
+	@FXML Button ok;
+	
     @Override
   public void start(Stage primaryStage) throws Exception
     {      
-		  // requette pour check si un compte existe
-    	Boolean exist= Model.getUserInstance().verifyUser();
+
+    	Boolean exist;
+    	
+    	try {
+    		
+        	exist = Model.getUserInstance().verifyUser();
+        	
+    	} catch(SQLSyntaxErrorException ssee) {
+    		
+    		Parent root = FXMLLoader.load(getClass().getResource("/view/erreurbdd.fxml"));
+            Scene scene = new Scene(root);
+    		scene.getStylesheets().add(getClass().getResource("/view/application.css").toExternalForm());
+            primaryStage.setTitle("Gestionnaire financier");
+            primaryStage.setScene(scene);
+            primaryStage.show();
+            
+    		return;
+    	}
     	
     	if(exist) {
     
@@ -39,33 +74,24 @@ public class Main extends Application {
             primaryStage.setResizable(false);
             primaryStage.show();
     	}
-		// t.setMontant(7445445);
-		 //bd.update(t);
-		  //bd.insert(salaire);
-		 // bd.getListeTransaction();
-		// bd.getTransaction(1);
-    	         
-    	 //  bd.importTransaction("U:/Agiles/data.xlsx");
-    	
-    	// requette pour setting le mot de passe 
-      
-       
     }
   
 
     public static void main(String[] args) {
     	
-//    	System.out.println("xouxou");
-//    	Personne dounya = new Personne("ennech");
-//    	Transaction salaire = new Transaction(0,1000, "income",Date.valueOf("2015-03-31"), );        
-//    	TransactionDAO bd = new TransactionDAO();
-//    	salaire.setMontant(954878987);
-//    	System.out.println(bd.getTransaction(0).getCategorie());
-//    	bd.getListeTransaction();
-//    	for(Transaction t :bd.getListeTransaction()) {
-//    		System.out.println(t.getCategorie());
-//    	}
-    	
        launch(args);
     }
+    
+    public void quitter(ActionEvent event) throws IOException {
+		
+		 Stage stage = (Stage) ok.getScene().getWindow();
+		  
+		    stage.close();
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// TODO Auto-generated method stub
+		
+	}
 }
