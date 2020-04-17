@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLSyntaxErrorException;
 
 public class UserDAO {
 
@@ -21,7 +22,7 @@ public class UserDAO {
 		}
 	}
 	
-	public boolean verifyUser() {
+	public boolean verifyUser() throws SQLSyntaxErrorException, Exception {
 		
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -37,8 +38,10 @@ public class UserDAO {
 				exist=true;
 			}
 
+		} catch (SQLSyntaxErrorException ssee) {
+			throw ssee;
 		} catch (Exception ee) {
-			ee.printStackTrace();
+			throw ee;
 		} finally {
 			
 			try {
