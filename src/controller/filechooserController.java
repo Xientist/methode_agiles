@@ -8,14 +8,17 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import javafx.stage.FileChooser.ExtensionFilter;
 import model.Model;
 
 public class filechooserController implements Initializable {
   
 @FXML TextField filesname,fileiname,filername;
+@FXML Button select;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
@@ -29,11 +32,14 @@ public class filechooserController implements Initializable {
 		File selectedfile =fc.showOpenDialog(null);
 		
 		String fichier=selectedfile.getAbsolutePath();
-
+		
 		filesname.setText(fichier);
 		System.out.println(fichier);
 		
-		Model.getTransactionInstance().importTransaction(fichier);		  
+		Model.getTransactionInstance().importTransaction(fichier);		
+		 Stage stage = (Stage) select.getScene().getWindow();
+		  
+		    stage.close();
 	}
 }
 
