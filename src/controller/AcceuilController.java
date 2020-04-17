@@ -153,6 +153,7 @@ public class AcceuilController implements Initializable{
 	    	Scene scene=new Scene(parent);
 	    	scene.getStylesheets().add(getClass().getResource("/view/application.css").toExternalForm());
 	    	Stage window = (Stage) acceuil.getScene().getWindow();
+	        window.setResizable(false);
 	    	window.setScene(scene);
 	    	window.show();
 	    	
@@ -163,6 +164,7 @@ public class AcceuilController implements Initializable{
 	    	Scene scene=new Scene(parent);
 	    	scene.getStylesheets().add(getClass().getResource("/view/application.css").toExternalForm());
 	    	Stage window = (Stage) acceuil.getScene().getWindow();
+	        window.setResizable(false);
 	    	window.setScene(scene);
 	    	window.show();
 	    	
@@ -172,6 +174,7 @@ public class AcceuilController implements Initializable{
 	    	Scene scene=new Scene(parent);
 	    	scene.getStylesheets().add(getClass().getResource("/view/application.css").toExternalForm());
 	    	Stage window = (Stage) acceuil.getScene().getWindow();
+	        window.setResizable(false);
 	    	window.setScene(scene);
 	    	window.show();
 	    	
@@ -182,6 +185,7 @@ public class AcceuilController implements Initializable{
 	    	Scene scene=new Scene(parent);
 	    	scene.getStylesheets().add(getClass().getResource("/view/application.css").toExternalForm());
 	    	Stage window = (Stage) acceuil.getScene().getWindow();
+	        window.setResizable(false);
 	    	window.setScene(scene);
 	    	window.show();
 	    	

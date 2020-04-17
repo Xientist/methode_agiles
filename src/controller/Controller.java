@@ -31,6 +31,7 @@ public class Controller {
     	Scene scene=new Scene(parent);
     	scene.getStylesheets().add(getClass().getResource("/view/application.css").toExternalForm());
     	Stage window = (Stage) authentification.getScene().getWindow();
+        window.setResizable(false);
     	window.setScene(scene);
     	window.show();
 		}

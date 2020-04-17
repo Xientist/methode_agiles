@@ -48,6 +48,7 @@ public class Main extends Application implements Initializable {
     		scene.getStylesheets().add(getClass().getResource("/view/application.css").toExternalForm());
             primaryStage.setTitle("Gestionnaire financier");
             primaryStage.setScene(scene);
+            primaryStage.setResizable(false);
             primaryStage.show();
             
     		return;

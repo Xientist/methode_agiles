@@ -29,6 +29,7 @@ public class CreationController {
     	Scene scene=new Scene(parent);
     	scene.getStylesheets().add(getClass().getResource("/view/application.css").toExternalForm());
     	Stage window = (Stage) mdp.getScene().getWindow();
+        window.setResizable(false);
     	window.setScene(scene);
     	window.show();
     	}

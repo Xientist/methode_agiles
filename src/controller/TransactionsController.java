@@ -76,6 +76,7 @@ public class TransactionsController implements Initializable{
 	    	    	Scene scene=new Scene(parent);
 	    	    	scene.getStylesheets().add(getClass().getResource("/view/application.css").toExternalForm());
 	    	    	Stage window = (Stage) acceuil.getScene().getWindow();
+	    	        window.setResizable(false);
 	    	    	window.setScene(scene);
 	    	    	window.show();
 	        	}
@@ -104,6 +105,7 @@ public class TransactionsController implements Initializable{
 	    	Scene scene=new Scene(parent);
 	    	scene.getStylesheets().add(getClass().getResource("/view/application.css").toExternalForm());
 	    	Stage window = (Stage) acceuil.getScene().getWindow();
+	        window.setResizable(false);
 	    	window.setScene(scene);
 	    	window.show();
 	    	
@@ -117,6 +119,7 @@ public class TransactionsController implements Initializable{
 	    	Scene scene=new Scene(parent);
 	    	scene.getStylesheets().add(getClass().getResource("/view/application.css").toExternalForm());
 	    	Stage window = (Stage) acceuil.getScene().getWindow();
+	        window.setResizable(false);
 	    	window.setScene(scene);
 	    	window.show();
 	    	
@@ -128,6 +131,7 @@ public class TransactionsController implements Initializable{
 	    	Scene scene=new Scene(parent);
 	    	scene.getStylesheets().add(getClass().getResource("/view/application.css").toExternalForm());
 	    	Stage window = (Stage) acceuil.getScene().getWindow();
+	        window.setResizable(false);
 	    	window.setScene(scene);
 	    	window.show();
 	    	
@@ -139,6 +143,7 @@ public class TransactionsController implements Initializable{
 	    	Scene scene=new Scene(parent);
 	    	scene.getStylesheets().add(getClass().getResource("/view/application.css").toExternalForm());
 	    	Stage window = (Stage) acceuil.getScene().getWindow();
+	        window.setResizable(false);
 	    	window.setScene(scene);
 	    	window.show();
 	    	
@@ -150,6 +155,7 @@ public class TransactionsController implements Initializable{
 	    	Scene scene=new Scene(parent);
 	    	scene.getStylesheets().add(getClass().getResource("/view/application.css").toExternalForm());
 	    	Stage window = (Stage) acceuil.getScene().getWindow();
+	        window.setResizable(false);
 	    	window.setScene(scene);
 	    	window.show();
 	    	
@@ -173,6 +179,7 @@ public class TransactionsController implements Initializable{
 		 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/filechooser.fxml"));
 	    	Parent root1 = (Parent) fxmlLoader.load();
 	    	Stage stage = new Stage();
+	        stage.setResizable(false);
 	    	stage.setScene(new Scene(root1));  
 	    	stage.show();
 	 }

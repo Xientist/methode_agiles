@@ -77,6 +77,7 @@ public class AjoutTransactionController {
 	    	Scene scene=new Scene(parent);
 	    	scene.getStylesheets().add(getClass().getResource("/view/application.css").toExternalForm());
 	    	Stage window = (Stage) ajouter.getScene().getWindow();
+	        window.setResizable(false);
 	    	window.setScene(scene);
 	    	window.show();
 	    	
@@ -86,6 +87,7 @@ public class AjoutTransactionController {
 	    	Scene scene=new Scene(parent);
 	    	scene.getStylesheets().add(getClass().getResource("/view/application.css").toExternalForm());
 	    	Stage window = (Stage) ajouter.getScene().getWindow();
+	        window.setResizable(false);
 	    	window.setScene(scene);
 	    	window.show();
 

@@ -191,6 +191,7 @@ public class StatistiquesController {
 	    	Scene scene=new Scene(parent);
 	    	scene.getStylesheets().add(getClass().getResource("/view/application.css").toExternalForm());
 	    	Stage window = (Stage) acceuil.getScene().getWindow();
+	        window.setResizable(false);
 	    	window.setScene(scene);
 	    	window.show();
 	    	
@@ -201,6 +202,7 @@ public class StatistiquesController {
 	    	Scene scene=new Scene(parent);
 	    	scene.getStylesheets().add(getClass().getResource("/view/application.css").toExternalForm());
 	    	Stage window = (Stage) acceuil.getScene().getWindow();
+	        window.setResizable(false);
 	    	window.setScene(scene);
 	    	window.show();
 	    	
@@ -210,6 +212,7 @@ public class StatistiquesController {
 	    	Scene scene=new Scene(parent);
 	    	scene.getStylesheets().add(getClass().getResource("/view/application.css").toExternalForm());
 	    	Stage window = (Stage) acceuil.getScene().getWindow();
+	        window.setResizable(false);
 	    	window.setScene(scene);
 	    	window.show();
 	    	
@@ -220,6 +223,7 @@ public class StatistiquesController {
 	    	Scene scene=new Scene(parent);
 	    	scene.getStylesheets().add(getClass().getResource("/view/application.css").toExternalForm());
 	    	Stage window = (Stage) acceuil.getScene().getWindow();
+	        window.setResizable(false);
 	    	window.setScene(scene);
 	    	window.show();
 	    	

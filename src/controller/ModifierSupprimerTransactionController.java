@@ -91,6 +91,7 @@ public class ModifierSupprimerTransactionController {
 	    	Scene scene=new Scene(parent);
 	    	scene.getStylesheets().add(getClass().getResource("/view/application.css").toExternalForm());
 	    	Stage window = (Stage) modifier.getScene().getWindow();
+	        window.setResizable(false);
 	    	window.setScene(scene);
 	    	window.show();
 	    }
@@ -103,6 +104,7 @@ public class ModifierSupprimerTransactionController {
 	    	Scene scene=new Scene(parent);
 	    	scene.getStylesheets().add(getClass().getResource("/view/application.css").toExternalForm());
 	    	Stage window = (Stage) supprimer.getScene().getWindow();
+	        window.setResizable(false);
 	    	window.setScene(scene);
 	    	window.show();
 	    }
@@ -113,6 +115,7 @@ public class ModifierSupprimerTransactionController {
 	    	Scene scene=new Scene(parent);
 	    	scene.getStylesheets().add(getClass().getResource("/view/application.css").toExternalForm());
 	    	Stage window = (Stage) annuler.getScene().getWindow();
+	        window.setResizable(false);
 	    	window.setScene(scene);
 	    	window.show();
 
