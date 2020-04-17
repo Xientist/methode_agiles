@@ -25,6 +25,7 @@ public class Main extends Application {
     		scene.getStylesheets().add(getClass().getResource("/view/application.css").toExternalForm());
             primaryStage.setTitle("Gestionnaire financier");
             primaryStage.setScene(scene);
+            primaryStage.setResizable(false);
             primaryStage.show();
     	}
     	else {
@@ -32,8 +33,10 @@ public class Main extends Application {
     		Parent root = FXMLLoader.load(getClass().getResource("/view/creationcompte.fxml"));
             Scene scene = new Scene(root);
     		scene.getStylesheets().add(getClass().getResource("/view/application.css").toExternalForm());
+    	
             primaryStage.setTitle("Gestionnaire financier");
             primaryStage.setScene(scene);
+            primaryStage.setResizable(false);
             primaryStage.show();
     	}
 		// t.setMontant(7445445);
