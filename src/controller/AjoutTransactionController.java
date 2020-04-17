@@ -82,7 +82,7 @@ public class AjoutTransactionController {
 	    	
 		}
 	   public void Annuler(ActionEvent event) throws IOException {
-	    	Parent parent= FXMLLoader.load(getClass().getResource("/view/acceuil.fxml"));
+	    	Parent parent= FXMLLoader.load(getClass().getResource("/view/transactions.fxml"));
 	    	Scene scene=new Scene(parent);
 	    	scene.getStylesheets().add(getClass().getResource("/view/application.css").toExternalForm());
 	    	Stage window = (Stage) ajouter.getScene().getWindow();

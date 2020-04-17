@@ -42,19 +42,31 @@ public class AcceuilController implements Initializable{
 	@Override
 	 public void initialize(URL location, ResourceBundle ressources) {
 		
-		 ArrayList<String> listYears = (ArrayList<String>) Model.getTransactionInstance().getYears();
+		 try {
+			 ArrayList<String> listYears = (ArrayList<String>) Model.getTransactionInstance().getYears();
+			 
+			 for(String year : listYears) {
+				 annee.getItems().add(year);
+			 }
 		 
-		 for(String year : listYears) {
-			 annee.getItems().add(year);
-		 }
-	 
-		double budgetValue = Model.getTransactionInstance().BudgetGlobal();
-		budget.setText(String.format("%.2f", budgetValue)+" €");
-		chargementDonneesinit();
-		
-	   
+			
+			double budgetValue = Model.getTransactionInstance().BudgetGlobal();
+			
+			budget.setText(String.format("%.2f", budgetValue)+" €");
+			chargementDonneesinit();
    
-	    }
+		} catch(NullPointerException npe) {
+			 
+			budget.setText(String.format("%.2f", 0.0)+" €");
+			moyenneMensuelleDepense.setText(String.format("%.2f", 0.0)+" €");
+			moyenneHebdomadaireDepense.setText(String.format("%.2f", 0.0)+ " €");
+			moyenneMensuelleGains.setText(String.format("%.2f", 0.0)+ " €");
+			moyenneAnnuelleGains.setText(String.format("%.2f", 0.0)+ " €");
+			moyenneAnnuelleDepense.setText(String.format("%.2f", 0.0)+ " €");
+			moyenneHebdomadaireGains.setText(String.format("%.2f", 0.0)+ " €");
+		}
+	}
+	
 	private void chargementDonneesinit() {
 		 annee.getSelectionModel().selectFirst();
 	     int year = Integer.parseInt(annee.getSelectionModel().getSelectedItem().toString());
